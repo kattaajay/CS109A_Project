@@ -68,7 +68,7 @@ def plot_images(images):
     
 plot_images(Images)
 ```
-***comment***
+**comment**
 
 As we can see from above pictures, pixels values vary and pictures are not of same size, so lets explore all the images and see how their sizes vary
 
