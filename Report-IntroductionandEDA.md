@@ -105,7 +105,7 @@ display(dataset_all.head())
   
 ```
 ```python
-Height	Width	channel	dog-breed
+	Height	Width	channel	dog-breed
 0	500.0	333.0	3.0	Chihuahua
 1	495.0	395.0	3.0	Chihuahua
 2	298.0	500.0	3.0	Chihuahua
@@ -117,15 +117,15 @@ Height	Width	channel	dog-breed
 display(dataset_all.describe())
 ```
 ```python
-	Height	Width	channel
-count	20580.000000	20580.000000	20580.000000
+	  Height	   Width	 channel
+count	20580.0000 	20580.0000	20580.00
 mean	385.861224	442.531876	3.000049
 std	124.863446	142.792308	0.006971
 min	100.000000	97.000000	3.000000
 25%	333.000000	361.000000	3.000000
 50%	375.000000	500.000000	3.000000
 75%	453.000000	500.000000	3.000000
-max	2562.000000	3264.000000	4.000000
+max	2562.00000	3264.00000	4.000000
 ```
 **comment**
 
