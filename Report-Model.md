@@ -498,3 +498,108 @@ print(" The Test accuracy for VGG19 model with image augmentation is {} %".forma
 ```python
 The Test accuracy for VGG19 model with image augmentation is 35.886 %
 ```
+
+## VGG19 with image augmentation and cropping images using bounding boxes
+
+```python
+# Load data which was cropped using annotations file
+
+xtrain=np.load('gdrive/My Drive/Colab Notebooks/X_train_bound.npy')
+xtest=np.load('gdrive/My Drive/Colab Notebooks/X_test_bound.npy')
+ytrain=np.load('gdrive/My Drive/Colab Notebooks/y_train_bound.npy')
+ytest=np.load('gdrive/My Drive/Colab Notebooks/y_test_bound.npy')
+```
+```python
+# split train data to train and validation sets
+X_train, x_val, y_train, y_val = train_test_split(xtrain,
+                                                    ytrain, test_size=0.2,random_state=9999,
+                                                   stratify=ytrain)
+# Imagedata generator wuth multiple 
+image_generation = ImageDataGenerator(
+                        featurewise_center=False,
+                        featurewise_std_normalization=False,
+                        rotation_range=10,
+                        width_shift_range=0.1,
+                        height_shift_range=0.1,
+                        zoom_range=.1,
+                        horizontal_flip=True)
+
+
+
+#Fit the image generator to training data
+image_generation.fit(X_train, augment=True)
+```
+```python
+
+#create model
+
+model = models.Sequential()
+conv_base =VGG19(weights='imagenet',
+                include_top=False,input_shape=(96,96,3))
+model.add(conv_base)
+model.add(layers.Flatten())
+model.add(layers.Dense(1000, activation='relu'))
+model.add(Dropout(0.2))
+model.add(layers.Dense(500, activation='relu'))
+model.add(Dropout(0.2))
+model.add(layers.Dense(120, activation='softmax'))
+
+conv_base.trainable=True
+set_trainable=False
+for layer in conv_base.layers:
+  if layer.name == 'block4_conv1':
+    set_trainable =True
+  if set_trainable:
+    layer.trainable =True
+  else:
+    layer.trainable =False
+    
+model.compile(loss='categorical_crossentropy',optimizer=optimizers.RMSprop(lr=5e-5), metrics=['accuracy'])
+
+weight_path='gdrive/My Drive/Colab Notebooks/VGG19_aug_bound.hdf5'
+checkpoint = ModelCheckpoint(weight_path, monitor='val_acc', verbose=1, save_best_only=True)
+callbacks_list = [checkpoint]
+
+print(model.summary())
+model_history = model.fit_generator(image_generation.flow(X_train, y_train, batch_size=64),
+          epochs=50,
+          verbose=1,
+          steps_per_epoch=X_train.shape[0]//64,
+          validation_data=(x_val,y_val),
+          callbacks=callbacks_list)
+```
+#### Model summary
+```python
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+vgg19 (Model)                (None, 3, 3, 512)         20024384  
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 4608)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 1000)              4609000   
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 1000)              0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 500)               500500    
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 500)               0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 120)               60120     
+=================================================================
+Total params: 25,194,004
+Trainable params: 22,868,436
+Non-trainable params: 2,325,568
+_________________________________________________________________
+```
+![Models](Images/vgg19-aug.png) 
+              Fig4. Loss and accuracy of CNN model
+              
+```python
+scores = model.evaluate(xtest, ytest, verbose=0)
+print(" The Test accuracy for VGG19 model with image augmentation and bounding boxes is {} %".format(scores[1]*100))
+```
+```python
+The Test accuracy for VGG19 model with image augmentation and bounding boxes is 54.178 %
+```
+
