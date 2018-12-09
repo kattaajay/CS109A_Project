@@ -30,7 +30,7 @@ list.tar file have the list of all files (file_list.mat), list of training set (
 Once we untar the files we would load the file_list.mat file to get the list of all files that are in the dataset.
 
 
-![IMUs](/Images/dog1.JPG)
+!(/Images/dog1.JPG)
 
 Fig 1. Image of dog
 
