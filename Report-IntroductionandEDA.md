@@ -127,7 +127,7 @@ min	100.000000	97.000000	3.000000
 75%	453.000000	500.000000	3.000000
 max	2562.000000	3264.000000	4.000000
 ```
-***comment***
+**comment**
 
 As we can see from the above descriptive statists, the height of the images range from 100 to 2562, whereas the width of images ranges from 442 to 3264. Clearly the images sizes are equal, so we will be resizing them in coming sections. To get better understanding, distribution of height, width and channels have been plotted.
 
