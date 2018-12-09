@@ -175,7 +175,12 @@ plt.title('Number of images that each breed has in Images dataset')
 plt.show()
 ```
 ![EDA](/Images/EDA_4.png) 
+
+
+
+
 **comment**
+
 
 From the above plot, number of images for each class range from 150 to 252, Maltese breed has the most images and redbone breed has least number of images.
 
