@@ -52,3 +52,12 @@ total_targets = keras.utils.to_categorical(total_targets, 120)
 X_train, X_test, y_train, y_test = train_test_split(total_tensors,
                                                     total_targets, random_state=9999,
                                                     test_size=0.2, stratify=total_targets)
+```
+```python
+# Save the test and train data to use it later
+np.save('gdrive/My Drive/Colab Notebooks/X_train', X_train)
+np.save('gdrive/My Drive/Colab Notebooks/X_test', X_test)
+np.save('gdrive/My Drive/Colab Notebooks/y_train', y_train)
+np.save('gdrive/My Drive/Colab Notebooks/y_test', y_test)
+```
+
