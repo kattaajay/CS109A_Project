@@ -13,7 +13,6 @@ nav_include: 2
 
 ## 1. Data Exploration & exploratory data analysis 
 
-### 1) Description of Raw Data
 
 The Stanford Dogs dataset contains images of 120 breeds of dogs from around the world. This dataset has been built using images and annotation from ImageNet for the task of fine-grained image categorization. Contents of this dataset: • Number of categories: 120 • Number of images: 20,580
 
@@ -35,13 +34,14 @@ Once we untar the files we would load the file_list.mat file to get the list of 
 Fig 1. Image of dog
 
 
-#### Load the file_list.mat to get the list of all files
+#### a. Load the files
 ```python
+# Load the file_list.mat to get the list of all files
 file_list = io.loadmat('file_list.mat')['file_list']
 display(file_list)
 
 ```
-####  Total number of file that exist in our dataset
+#### b. Total number of files
 ```python
 # Total number of file that exist in our dataset
 total_images=file_list.shape[0]
@@ -54,7 +54,7 @@ print("The total number of classes that exist in our images dataset are {}"\
     The total number of file that exist in our images dataset are 20580
     The total number of classes that exist in our images dataset are 120
     
-#### Now lets display an image
+#### c. Display an image
 ```python
 Images=['n02112137-chow/n02112137_10134.jpg', 
         'n02113799-standard_poodle/n02113799_448.jpg' ]
@@ -72,8 +72,10 @@ plot_images(Images)
 
 As we can see from above pictures, pixels values vary and pictures are not of same size, so lets explore all the images and see how their sizes vary
 
-#### function to get list of all files and their height, width and number of channels.
+#### d. function to get list of all files and their height, width and number of channels.
 ```python
+#function to get list of all files and their height, width and number of channels.
+
 def get_eda(path, images_list):
     
     # create a numpy array to store height, width and number of channels
@@ -97,7 +99,7 @@ def get_eda(path, images_list):
     dataset_all.loc[:,'dog-breed'] = pd.Series(dog_breed, index=dataset_all.index)
     return dataset_all
 ```
-#### Get the charecteristics of all images and store it in the dataframe
+#### e. Get the characteristics of all images and store it in the dataframe
 ```python
 dataset_all= get_eda('Images',file_list)
 display(dataset_all.head())
@@ -112,7 +114,7 @@ display(dataset_all.head())
 3	500.0	345.0	3.0	Chihuahua
 4	484.0	322.0	3.0	Chihuahua
 ```
-#### Generates descriptive statistics 
+#### f. Generates descriptive statistics 
 ```python
 display(dataset_all.describe())
 ```
@@ -131,7 +133,7 @@ max	2562.00000	3264.00000	4.000000
 
 As we can see from the above descriptive statists, the height of the images range from 100 to 2562, whereas the width of images ranges from 442 to 3264. Clearly the images sizes are equal, so we will be resizing them in coming sections. To get better understanding, distribution of height, width and channels have been plotted.
 
-#### Distribution of height, width and channels of all images
+#### g. Distribution of height, width and channels of all images
 ```python
 columns=['Height','Width','channel']
 fig, ax = plt.subplots(1,3,figsize=(18,5))
@@ -149,7 +151,7 @@ for i,j in enumerate(columns):
 
 The distribution plots tells us that most of the images have height and weights ranging from 100 to 600, whereas number of channels of images are 3.
 
-#### To count the images with varying channels
+#### h. count the images with varying channels
 ```python
 channels_count= np.array(pd.Series(dataset_all['channel']).value_counts())
 print("The number of images that have 4 channels are {} and  3 channels are {}"
@@ -162,7 +164,7 @@ The number of images that have 4 channels are 1 and  3 channels are 20579
 Based on above output, all our images have 3 channels (RGB), whereas only one image have channel 4 which will be converted to channel 3 in further sections.
       .format(channels_count[1], channels_count[0]))
 
-#### plot the number of images that each class has
+#### i. Plot the number of images that each class has
 ```python
 classes=pd.DataFrame(pd.Series(dataset_all['dog-breed']).value_counts())
 classes.loc[:,'breed']=classes.index
