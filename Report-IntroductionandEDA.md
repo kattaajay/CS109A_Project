@@ -184,7 +184,7 @@ plt.show()
 
 From the above plot, number of images for each class range from 150 to 252, Maltese breed has the most images and redbone breed has least number of images.
 
-## 2) Exploratory Data Analysis Findings and Conclusions
+## 2. Exploratory Data Analysis Findings and Conclusions
 
 The Stanford dogs images dataset is a good source for what we are trying to accomplish in our final project. It contains a solid number of samples distributed across multiple classes. There are 20,580 samples and a total of 120 classes, on an average each class has an around 150 images.
 
