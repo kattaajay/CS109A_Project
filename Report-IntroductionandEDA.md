@@ -11,27 +11,28 @@ nav_include: 2
 
 
 
-## 1. Introduction and Description of Data
+## 1. Data Exploration & exploratory data analysis 
 
-### 1) Experiment Details
+### 1) Description of Raw Data
 
-The sloped walking protocol involved 6 subjects walking at 7 different conditions. The walking slope is collected at discrete slopes of -10%, -5%, 0%, 5%, 10%, 15%, and 20% set by the treadmill. And the suit data was collected at various speeds of 1 m/s, 1.5 m/s, ..., 3.5 m/s, 4 m/s.
+The Stanford Dogs dataset contains images of 120 breeds of dogs from around the world. This dataset has been built using images and annotation from ImageNet for the task of fine-grained image categorization. Contents of this dataset: • Number of categories: 120 • Number of images: 20,580
+
+We will build models to classify dog breed and compare them. The files which we need to perform exploratory data analysis are
+
+http://vision.stanford.edu/aditya86/ImageNetDogs/images.tar
+
+http://vision.stanford.edu/aditya86/ImageNetDogs/lists.tar
+
+The images.tar file have all the images that are needed for our analysis and to create a model.
+
+list.tar file have the list of all files (file_list.mat), list of training set (train_list.mat) and list of test set (test_list.mat)
+
+Once we untar the files we would load the file_list.mat file to get the list of all files that are in the dataset.
 
 
-![Experiment set-up](/Images/experiment.png)
+![IMUs](/Images/dog1.JPG)
 
-Fig 1. Experiment set-up 
-
-### 2) Description of Raw Data
-
-The Hip-Only soft exoskeleton has 3
-IMUs (MTi-3 AHRS, Xsens Technologies B.V., Enschede, Netherlands) on the abdomen and the
-anterior part of each thigh. Each IMU can measure 3-axes linear and angular
-motion using built in accelerometer and gyroscopes. The outputs of the IMU are relevant to the suit because it gives information about the phase of user's gait cycle which determines when assistance should be provided. An image of the particular IMU we are using is shown below.
-
-![IMUs](/Images/IMU.JPG)
-
-Fig 2. Image of Xsens IMU from Xsens User Manual
+Fig 1. Image of dog
 
 
 During the sloped walking experiments on the treadmill, only certain IMU outputs are selected for streaming. The roll, pitch and yaw angles, angular velocity and linear accelerations were collected. Note the yaw angle is interpreted as heading and measured in the East-North-Up coordinate system, whereas the roll and pitch angles are measured in the local coordinate frame. The sequence of rotation for Euler angles uses the aerospace convention for rotation from global frame to location frame. Referencing the local coordinate frame in Fig. 1, the IMU sensor is worn such that *x* axis is normal to the sagital plane and points medially, *y* axis is normal to the coronal plane and points anteriorially, and *z* axis is normal to the transverse plane and points vertically down.
