@@ -1,6 +1,6 @@
 theme: jekyll-theme-minimal
-title: Exosuit Slope Detection
-description: Detecting walking and running slopes using IMUS
+title: Dog Breed Classification
+description: Dog Breed Classification
 baseurl:
 markdown: kramdown
 kramdown:
