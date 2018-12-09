@@ -254,6 +254,7 @@ callbacks_list = [checkpoint]
 print(model.summary())
 model_history = model.fit(xtrain, ytrain, epochs=100, batch_size=128,validation_split=0.2, callbacks=callbacks_list)
 ```
+##### Model summary
 ```python
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
