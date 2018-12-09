@@ -61,3 +61,106 @@ np.save('gdrive/My Drive/Colab Notebooks/y_train', y_train)
 np.save('gdrive/My Drive/Colab Notebooks/y_test', y_test)
 ```
 
+## 1. Baseline Neural netwrok model
+
+   ```python
+  #Load the data
+
+xtrain=np.load('gdrive/My Drive/Colab Notebooks/X_train.npy')
+xtest=np.load('gdrive/My Drive/Colab Notebooks/X_test.npy')
+ytrain=np.load('gdrive/My Drive/Colab Notebooks/y_train.npy')
+ytest=np.load('gdrive/My Drive/Colab Notebooks/y_test.npy')
+```
+```python
+# Flatten input array
+
+X_train = xtrain.reshape(xtrain.shape[0],-1)
+X_test = xtest.reshape(xtest.shape[0],-1)
+```
+```python
+#  Run the model for 50 epochs
+
+epochs = 50
+num_hidden1 =100
+num_hidden2 =100
+num_hidden3 =100
+num_hidden4 =100
+num_hidden5 =100
+num_hidden6 =100
+num_hidden7 =100
+num_hidden8 =100
+num_hidden9 =100
+num_hidden10 =100
+drop_out=0.0
+
+inputsize=X_train.shape[1]
+
+
+model = Sequential()
+
+model.add(Dense(num_hidden1, input_dim=inputsize))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(drop_out))
+
+model.add(Dense(num_hidden2))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(drop_out))
+
+model.add(Dense(num_hidden3))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(drop_out))
+
+model.add(Dense(num_hidden4))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(drop_out))
+
+model.add(Dense(num_hidden5))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(drop_out))
+
+model.add(Dense(num_hidden6))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(drop_out))
+
+model.add(Dense(num_hidden7))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(drop_out))
+
+model.add(Dense(num_hidden8))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(drop_out))
+
+model.add(Dense(num_hidden9))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(drop_out))
+
+model.add(Dense(num_hidden10))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(drop_out))
+
+model.add(Dense(120, activation = 'softmax')) 
+
+model.compile(loss='categorical_crossentropy',optimizer='RMSprop', metrics=['accuracy'])
+
+weight_path='gdrive/My Drive/Colab Notebooks/DNN_bound.hdf5'
+checkpoint = ModelCheckpoint(weight_path, monitor='val_acc', verbose=1, save_best_only=True)
+callbacks_list = [checkpoint]
+
+model_history = model.fit(X_train, ytrain, epochs=epochs, batch_size=128, validation_split=0.2,callbacks=callbacks_list)
+```
+```python
+scores = model.evaluate(X_test.reshape(X_test.shape[0],-1), ytest, verbose=0)
+print(" The Test accuracy for baseline model is {:2f} %".format(scores[1]*100))
+```
+The Test accuracy for baseline model is is 3.644 %
+
