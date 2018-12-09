@@ -17,9 +17,7 @@ More information related to model training and performance can be found on the C
 
 
 
-## 0. Data Preparation
-### 1) Reading and Cleaning Data
-
+##  Data Preparation
 
 
 ```python
@@ -61,7 +59,8 @@ np.save('gdrive/My Drive/Colab Notebooks/y_train', y_train)
 np.save('gdrive/My Drive/Colab Notebooks/y_test', y_test)
 ```
 
-## 1. Baseline Neural netwrok model
+## Deep Learning Models
+#### 1. Baseline Neural network model
 
    ```python
   #Load the data
@@ -171,7 +170,7 @@ print(" The Test accuracy for baseline model is {:2f} %".format(scores[1]*100))
 The Test accuracy for baseline model is is 3.644 %
 ```
 
-## 1. Convolutional Neural Network model
+#### 2. Convolutional Neural Network model
 
 ```python
 
@@ -332,7 +331,7 @@ print(" The Test accuracy for CNN model is {:2f}".format(scores[1]*100))
 ```python
 The Test accuracy for CNN model is 18.658 %
 ```
-## VGG19
+#### 3. VGG19
 
 ```python
 
@@ -403,7 +402,7 @@ print(" The Test accuracy for VGG19 model is {:2f}".format(scores[1]*100))
 ```python
 The Test accuracy for VGG19 model is 30.1506 %
 ```
-## VGG19 with image augmentation
+#### 4. VGG19 with image augmentation
 
 ```python
 # split train data to train and validation sets
@@ -499,7 +498,7 @@ print(" The Test accuracy for VGG19 model with image augmentation is {} %".forma
 The Test accuracy for VGG19 model with image augmentation is 35.886 %
 ```
 
-## VGG19 with image augmentation and cropping images using bounding boxes
+#### 5. VGG19 with image augmentation and cropping images using bounding boxes
 
 ```python
 # Load data which was cropped using annotations file
