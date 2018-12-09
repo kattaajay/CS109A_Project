@@ -332,3 +332,75 @@ print(" The Test accuracy for CNN model is {:2f}".format(scores[1]*100))
 ```python
 The Test accuracy for CNN model is 18.658 %
 ```
+## VGG19
+
+```python
+
+#create model
+
+model = models.Sequential()
+conv_base =VGG19(weights='imagenet',
+                include_top=False,input_shape=(96,96,3))
+model.add(conv_base)
+
+print(model)
+model.add(layers.Flatten())
+model.add(layers.Dense(1000, activation='relu'))
+model.add(Dropout(0.2))
+model.add(layers.Dense(500, activation='relu'))
+model.add(Dropout(0.2))
+model.add(layers.Dense(120, activation='softmax'))
+
+conv_base.trainable=True
+set_trainable=False
+for layer in conv_base.layers:
+  if layer.name == 'block4_conv1':
+    set_trainable =True
+  if set_trainable:
+    layer.trainable =True
+  else:
+    layer.trainable =False
+    
+model.compile(loss='categorical_crossentropy',optimizer=optimizers.RMSprop(lr=5e-5), metrics=['accuracy'])
+
+weight_path='gdrive/My Drive/Colab Notebooks/VGG19.hdf5'
+checkpoint = ModelCheckpoint(weight_path, monitor='val_acc', verbose=1, save_best_only=True)
+callbacks_list = [checkpoint]
+
+print(model.summary())
+model_history = model.fit(xtrain, ytrain, epochs=25, batch_size=64,validation_split=0.2,callbacks=callbacks_list)
+```
+#### Model summary
+```python
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+vgg19 (Model)                (None, 3, 3, 512)         20024384  
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 4608)              0         
+_________________________________________________________________
+dense_4 (Dense)              (None, 1000)              4609000   
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 1000)              0         
+_________________________________________________________________
+dense_5 (Dense)              (None, 500)               500500    
+_________________________________________________________________
+dropout_4 (Dropout)          (None, 500)               0         
+_________________________________________________________________
+dense_6 (Dense)              (None, 120)               60120     
+=================================================================
+Total params: 25,194,004
+Trainable params: 22,868,436
+Non-trainable params: 2,325,568
+_________________________________________________________________
+```
+![Models](Images/vgg19.png) 
+Fig3. Loss and accuracy of VGG19 model
+```python
+scores = model.evaluate(xtest, ytest, verbose=0)
+print(" The Test accuracy for VGG19 model is {:2f}".format(scores[1]*100))
+```
+```python
+The Test accuracy for VGG19 model is 30.1506 %
+```
+
