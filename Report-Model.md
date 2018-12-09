@@ -167,9 +167,11 @@ model_history = model.fit(X_train, ytrain, epochs=epochs, batch_size=128, valida
 scores = model.evaluate(X_test.reshape(X_test.shape[0],-1), ytest, verbose=0)
 print(" The Test accuracy for baseline model is {:2f} %".format(scores[1]*100))
 ```
-**comment**
+```python
 The Test accuracy for baseline model is is 3.644 %
-
+```
 
 ## 1. Convolutional Neural Network model
+
+
 
