@@ -173,5 +173,153 @@ The Test accuracy for baseline model is is 3.644 %
 
 ## 1. Convolutional Neural Network model
 
+```python
 
+kernerlsize=(3,3)
+drop_out=0.5
+
+#create model
+model = Sequential()
+
+# Convolution layer 1
+model.add(Convolution2D(filters = 32, kernel_size = kernerlsize,padding = 'Same', 
+                         activation ='relu',
+                        input_shape = (96, 96, 3))) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+
+# Convolution layer 2
+model.add(Convolution2D (filters = 64, kernel_size = kernerlsize,padding = 'Same', 
+                         activation ='relu')) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+
+# Convolution layer 3
+model.add(Convolution2D (filters = 128, kernel_size = kernerlsize,padding = 'Same', 
+                         activation ='relu')) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+# Convolution layer 4
+model.add(Convolution2D (filters = 256, kernel_size = kernerlsize,padding = 'Same', 
+                         activation ='relu')) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+
+# Convolution layer 5
+model.add(Convolution2D (filters = 512, kernel_size = kernerlsize,padding = 'Same', 
+                         activation ='relu')) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+
+# Convolution layer 6
+model.add(Convolution2D (filters = 512, kernel_size = kernerlsize,padding = 'Same', 
+                         activation ='relu')) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+
+# Flatten
+model.add(Flatten()) 
+
+# Fully connected layer 
+model.add(Dense(units = 1000)) 
+model.add(BatchNormalization())
+model.add(Activation('relu')) 
+model.add(Dropout(drop_out))
+
+#Output layer with 120 nodes
+model.add(Dense(120, activation = 'softmax')) 
+# Compile model
+
+model.compile(loss='categorical_crossentropy',optimizer='adam', metrics=['accuracy'])
+
+## save the weights, when validation is best
+
+weight_path='gdrive/My Drive/Colab Notebooks/CNN_bound.hdf5'
+checkpoint = ModelCheckpoint(weight_path, monitor='val_acc', verbose=1, save_best_only=True)
+callbacks_list = [checkpoint]
+
+
+print(model.summary())
+model_history = model.fit(xtrain, ytrain, epochs=100, batch_size=128,validation_split=0.2, callbacks=callbacks_list)
+```
+```python
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_25 (Conv2D)           (None, 96, 96, 32)        896       
+_________________________________________________________________
+batch_normalization_29 (Batc (None, 96, 96, 32)        128       
+_________________________________________________________________
+max_pooling2d_25 (MaxPooling (None, 48, 48, 32)        0         
+_________________________________________________________________
+dropout_23 (Dropout)         (None, 48, 48, 32)        0         
+_________________________________________________________________
+conv2d_26 (Conv2D)           (None, 48, 48, 64)        18496     
+_________________________________________________________________
+batch_normalization_30 (Batc (None, 48, 48, 64)        256       
+_________________________________________________________________
+max_pooling2d_26 (MaxPooling (None, 24, 24, 64)        0         
+_________________________________________________________________
+dropout_24 (Dropout)         (None, 24, 24, 64)        0         
+_________________________________________________________________
+conv2d_27 (Conv2D)           (None, 24, 24, 128)       73856     
+_________________________________________________________________
+batch_normalization_31 (Batc (None, 24, 24, 128)       512       
+_________________________________________________________________
+max_pooling2d_27 (MaxPooling (None, 12, 12, 128)       0         
+_________________________________________________________________
+dropout_25 (Dropout)         (None, 12, 12, 128)       0         
+_________________________________________________________________
+conv2d_28 (Conv2D)           (None, 12, 12, 256)       295168    
+_________________________________________________________________
+batch_normalization_32 (Batc (None, 12, 12, 256)       1024      
+_________________________________________________________________
+max_pooling2d_28 (MaxPooling (None, 6, 6, 256)         0         
+_________________________________________________________________
+dropout_26 (Dropout)         (None, 6, 6, 256)         0         
+_________________________________________________________________
+conv2d_29 (Conv2D)           (None, 6, 6, 512)         1180160   
+_________________________________________________________________
+batch_normalization_33 (Batc (None, 6, 6, 512)         2048      
+_________________________________________________________________
+max_pooling2d_29 (MaxPooling (None, 3, 3, 512)         0         
+_________________________________________________________________
+dropout_27 (Dropout)         (None, 3, 3, 512)         0         
+_________________________________________________________________
+conv2d_30 (Conv2D)           (None, 3, 3, 512)         2359808   
+_________________________________________________________________
+batch_normalization_34 (Batc (None, 3, 3, 512)         2048      
+_________________________________________________________________
+max_pooling2d_30 (MaxPooling (None, 1, 1, 512)         0         
+_________________________________________________________________
+dropout_28 (Dropout)         (None, 1, 1, 512)         0         
+_________________________________________________________________
+flatten_5 (Flatten)          (None, 512)               0         
+_________________________________________________________________
+dense_9 (Dense)              (None, 1000)              513000    
+_________________________________________________________________
+batch_normalization_35 (Batc (None, 1000)              4000      
+_________________________________________________________________
+activation_5 (Activation)    (None, 1000)              0         
+_________________________________________________________________
+dropout_29 (Dropout)         (None, 1000)              0         
+_________________________________________________________________
+dense_10 (Dense)             (None, 120)               120120    
+=================================================================
+Total params: 4,571,520
+Trainable params: 4,566,512
+Non-trainable params: 5,008
+```
 
