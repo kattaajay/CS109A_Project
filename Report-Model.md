@@ -324,7 +324,7 @@ Trainable params: 4,566,512
 Non-trainable params: 5,008
 ```
 ![Models](Images/CNN.png) 
-                                Fig2. Loss and accuracy of CNN model
+              Fig2. Loss and accuracy of CNN model
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for CNN model is {:2f}".format(scores[1]*100))
