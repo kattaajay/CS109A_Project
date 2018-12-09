@@ -41,7 +41,7 @@ file_list = io.loadmat('file_list.mat')['file_list']
 display(file_list)
 
 ```
-#### # Total number of file that exist in our dataset
+####  Total number of file that exist in our dataset
 ```python
 # Total number of file that exist in our dataset
 total_images=file_list.shape[0]
@@ -53,3 +53,21 @@ print("The total number of classes that exist in our images dataset are {}"\
 ```
     The total number of file that exist in our images dataset are 20580
     The total number of classes that exist in our images dataset are 120
+    
+#### Now lets display an image
+```python
+Images=['n02112137-chow/n02112137_10134.jpg', 
+        'n02113799-standard_poodle/n02113799_448.jpg' ]
+
+def plot_images(images):
+    
+    for image in images:
+        demo=mpimg.imread('Images/'+image)
+        imshow(demo)
+        plt.show()
+    
+plot_images(Images)
+```
+***comment***
+
+As we can see from above pictures, pixels values vary and pictures are not of same size, so lets explore all the images and see how their sizes vary
