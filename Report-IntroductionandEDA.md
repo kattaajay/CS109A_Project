@@ -144,3 +144,47 @@ for i,j in enumerate(columns):
 ```
 
 ![EDA](/Images/EDA_histogram.png) 
+
+**comment**
+
+The distribution plots tells us that most of the images have height and weights ranging from 100 to 600, whereas number of channels of images are 3.
+
+#### To count the images with varying channels
+```python
+channels_count= np.array(pd.Series(dataset_all['channel']).value_counts())
+print("The number of images that have 4 channels are {} and  3 channels are {}"
+```
+```python
+The number of images that have 4 channels are 1 and  3 channels are 20579
+```
+**comment**
+
+Based on above output, all our images have 3 channels (RGB), whereas only one image have channel 4 which will be converted to channel 3 in further sections.
+      .format(channels_count[1], channels_count[0]))
+
+#### plot the number of images that each class has
+```python
+classes=pd.DataFrame(pd.Series(dataset_all['dog-breed']).value_counts())
+classes.loc[:,'breed']=classes.index
+sort_dataset_all = classes.sort_values(['dog-breed'])
+sort_dataset_all.plot.barh(x='breed', y='dog-breed',figsize=(10,25), 
+                           sort_columns='dog-breed',grid=True, legend=False, color='k')
+plt.xlabel('Number of images',FontSize=13)
+plt.ylabel('Breed',FontSize=13)
+plt.title('Number of images that each breed has in Images dataset')
+plt.show()
+```
+![EDA](/Images/EDA_4.png) 
+**comment**
+
+From the above plot, number of images for each class range from 150 to 252, Maltese breed has the most images and redbone breed has least number of images.
+
+### 2) Exploratory Data Analysis Findings and Conclusions
+
+	The Stanford dogs images dataset is a good source for what we are trying to accomplish in our final project. It contains a solid number of samples distributed across multiple classes. There are 20,580 samples and a total of 120 classes, on an average each class has an around 150 images.
+
+	Out of all samples only one image has 4 channels, for that reason we have decided to convert it to 3 channels during the data cleansing phase. Furthermore, when it comes to images sizing, we noticed that image's size varied from 100 to 2562 height wise, and from 442 to 3264 width wise. Clearly, there is a huge difference in image sizes in the dataset which can be observed in distribution plots as well. One of the model's training requirement is to input feature space to be equal, hence we will resize the images to around 150 by 150 and they would have 3 channels (RGB).
+
+	We are foreseeing training challenges in our models due to the limited number of samples that are available for each class, since we have 120 classes with on an average 150 images each. One way to overcome this issue, we would like to group multiple breeds into fewer groups (such as Irish water spaniel, Welsh springer spaniel in one family and so on). By doing so, we would be able to reduce the number of classes and also at the same time, we would have more samples for each group.
+
+	However, even after performing data cleansing and grouping several classes and our model still cannot perform, we may try to use image recognition modules (such as GoogLeNet) for training purposes
