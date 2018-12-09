@@ -179,8 +179,6 @@ plt.show()
 
 
 
-**comment**
-
 
 From the above plot, number of images for each class range from 150 to 252, Maltese breed has the most images and redbone breed has least number of images.
 
