@@ -493,5 +493,8 @@ _________________________________________________________________
               
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
-print(" The test accuracy is {}".format(scores[1]*100))
+print(" The Test accuracy for VGG19 model with image augmentation is {} %".format(scores[1]*100))
+```
+```python
+The Test accuracy for VGG19 model with image augmentation is 35.886 %
 ```
