@@ -35,11 +35,21 @@ Once we untar the files we would load the file_list.mat file to get the list of 
 Fig 1. Image of dog
 
 
+#### Load the file_list.mat to get the list of all files
 ```python
-
-# Load the file_list.mat to get the list of all files
-
 file_list = io.loadmat('file_list.mat')['file_list']
 display(file_list)
 
 ```
+#### # Total number of file that exist in our dataset
+```python
+# Total number of file that exist in our dataset
+total_images=file_list.shape[0]
+total_classes= os.listdir('Images')
+print("The total number of file that exist in our images dataset are {}"\
+                                                .format(total_images))
+print("The total number of classes that exist in our images dataset are {}"\
+                                                .format(len(total_classes)))
+```
+    The total number of file that exist in our images dataset are 20580
+    The total number of classes that exist in our images dataset are 120
