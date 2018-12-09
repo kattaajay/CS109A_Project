@@ -71,3 +71,75 @@ plot_images(Images)
 ***comment***
 
 As we can see from above pictures, pixels values vary and pictures are not of same size, so lets explore all the images and see how their sizes vary
+
+#### function to get list of all files and their height, width and number of channels.
+```python
+def get_eda(path, images_list):
+    
+    # create a numpy array to store height, width and number of channels
+    dataset = np.ndarray(shape=(len(images_list), 3))
+    dog_breed=[]
+   
+    image_count = 0
+    # Below will loop take each image and store its features 
+    for image in images_list:
+        
+        image_file = path+'/'+str(image[0][0])
+        breed_name=str(image[0][0]).split('/')[0].split('-')[1]
+        image_eda = imageio.imread(image_file)
+        dog_breed.append(str(breed_name))
+        dataset[image_count, 0:1] = image_eda.shape[0]
+        dataset[image_count, 1:2] = image_eda.shape[1]
+        dataset[image_count, 2:3] = image_eda.shape[2]
+        image_count = image_count + 1
+
+    dataset_all= pd.DataFrame(dataset,columns=('Height', 'Width','channel'))
+    dataset_all.loc[:,'dog-breed'] = pd.Series(dog_breed, index=dataset_all.index)
+    return dataset_all
+```
+#### Get the charecteristics of all images and store it in the dataframe
+```python
+dataset_all= get_eda('Images',file_list)
+display(dataset_all.head())
+	
+  
+```
+```python
+Height	Width	channel	dog-breed
+0	500.0	333.0	3.0	Chihuahua
+1	495.0	395.0	3.0	Chihuahua
+2	298.0	500.0	3.0	Chihuahua
+3	500.0	345.0	3.0	Chihuahua
+4	484.0	322.0	3.0	Chihuahua
+```
+#### Generates descriptive statistics 
+```python
+display(dataset_all.describe())
+```
+```python
+	Height	Width	channel
+count	20580.000000	20580.000000	20580.000000
+mean	385.861224	442.531876	3.000049
+std	124.863446	142.792308	0.006971
+min	100.000000	97.000000	3.000000
+25%	333.000000	361.000000	3.000000
+50%	375.000000	500.000000	3.000000
+75%	453.000000	500.000000	3.000000
+max	2562.000000	3264.000000	4.000000
+```
+***comment***
+
+As we can see from the above descriptive statists, the height of the images range from 100 to 2562, whereas the width of images ranges from 442 to 3264. Clearly the images sizes are equal, so we will be resizing them in coming sections. To get better understanding, distribution of height, width and channels have been plotted.
+
+### Distribution of height, width and channels of all images
+```python
+columns=['Height','Width','channel']
+fig, ax = plt.subplots(1,3,figsize=(18,5))
+for i,j in enumerate(columns):
+    ax[i].hist(dataset_all[j], bins=20, label=j)
+    ax[i].set_xlabel(j+' of the images',FontSize=14)
+    ax[i].set_ylabel('frequency',FontSize=14)
+    ax[i].set_title('Distribution of '+ j+' in all images',FontSize=14)
+    ax[i].legend()
+```
+
