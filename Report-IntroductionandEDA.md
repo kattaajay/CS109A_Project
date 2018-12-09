@@ -72,7 +72,7 @@ plot_images(Images)
 
 As we can see from above pictures, pixels values vary and pictures are not of same size, so lets explore all the images and see how their sizes vary
 
-#### d. function to get list of all files and their height, width and number of channels.
+#### d. Function to get list of all files and their height, width and number of channels.
 ```python
 #function to get list of all files and their height, width and number of channels.
 
@@ -151,7 +151,7 @@ for i,j in enumerate(columns):
 
 The distribution plots tells us that most of the images have height and weights ranging from 100 to 600, whereas number of channels of images are 3.
 
-#### h. count the images with varying channels
+#### h. Count the images with varying channels
 ```python
 channels_count= np.array(pd.Series(dataset_all['channel']).value_counts())
 print("The number of images that have 4 channels are {} and  3 channels are {}"
