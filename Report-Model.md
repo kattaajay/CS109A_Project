@@ -161,8 +161,7 @@ model_history = model.fit(X_train, ytrain, epochs=epochs, batch_size=128, valida
 
 
 ![Models](Images/dnn.png) 
-
-                Fig1. Loss and accuracy of Baseline model
+                                Fig1. Loss and accuracy of Baseline model
 
 ```python
 scores = model.evaluate(X_test.reshape(X_test.shape[0],-1), ytest, verbose=0)
