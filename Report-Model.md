@@ -488,7 +488,7 @@ Trainable params: 22,868,436
 Non-trainable params: 2,325,568
 _________________________________________________________________
 ```
-![Models](Images/vgg19 - aug.png) 
+![Models](Images/vgg19-aug.png) 
               Fig4. Loss and accuracy of CNN model
               
 ```python
