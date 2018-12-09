@@ -7,6 +7,7 @@ nav_include: 1
 
 ## CS109A Data Science Final project
  Edgardo Hernandez, Ajay Katta, Jesus Islas
+ 
 Group #1
 
 
