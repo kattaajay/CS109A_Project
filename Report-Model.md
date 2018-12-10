@@ -413,6 +413,8 @@ The Test accuracy for CNN model is 18.658 %
 ```
 #### 3. CNN with image augmentation
 
+As we can see above, the best accuracy that we have got after fine-tuning the CNN is around 18.66% even after having batch normalization and drop out. Inorder to increase the accuracy, we did image augmentation, since we have less number of images per class. Using the image data generator that comes with keras, we are able to generate batches of image data with real-time data augmentation. The augmentation that was considered are rotation, width shift, height shift, zoom range, horizontal flip.
+
 ```python
 # split train data to train and validation sets
 X_train, x_val, y_train, y_val = train_test_split(xtrain,
