@@ -10,9 +10,7 @@ nav_include: 4
 
 **Model Descriptions**
 
-We used various models to for each problem formuation (3-class universal classification, 3-class subject-specific classification, 7-class universal classification, 7-class subject-specific classification, general regression, subject-specific regression). The train set consists of data from subjects 1 to 5, and the test set consists of data from subject 6. We also used two cross validation methods, normal cross validation and leave-one-subject-out cross validations. 
-
-More information related to model training and performance can be found on the Conlusions and Results page.
+We have worked on various models for image classification. We have created a baseline model with multiple layers of Neural network, convolutional neural networks models, pre-trained models such as VGG19 and also tried to enhance the test accuracy using image augmentation and cropping images using the abounding boxes. All the models were discussed below and the challenge was the less number of images that we have for each class, and also the computational resources that are available. The total number of classes that are in dataset are 120, and number of images that are available for modelling are 20580. Furthermore, we have split training set to training and validation sets for cross-validation. All the results and conclusions are discussed in Conclusions and Results page.
 
 
 
