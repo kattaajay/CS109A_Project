@@ -16,6 +16,7 @@ We have worked on various models for image classification. We have created a bas
 
 ##  Data Preparation
 
+The dataset provided "file_list.mat" file, from where you can extract the image names and labels, using that file images are converted to numpy arrays and same with the labels. After converting them in to numpy arrays, we have saved them so that they can be used in different models.
 
 ```python
 # Load the files 
