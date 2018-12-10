@@ -586,6 +586,8 @@ The Test accuracy for CNN model with image augmentation is 30.174 %
 
 #### 3. VGG19
 
+Image augmentation helped CNNs to achieve better score, but inorder to achieve more  accuracy, we used  a convolutional neural network 'VGG19' that is trained on more than a million images from the ImageNet database. The network is 19 layers deep and we have frozen all layers, except last two convnets and trained the model, so that we fine-tune VGG19 to our data.
+
 ```python
 
 #create model
