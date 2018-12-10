@@ -252,12 +252,11 @@ _________________________________________________________________
 ##### Loss and accuracy plot of Baseline model
 ![Models](Images/dnn.png) 
                                
-
+##### Test accuracy
 ```python
 scores = model.evaluate(X_test.reshape(X_test.shape[0],-1), ytest, verbose=0)
 print(" The Test accuracy for baseline model is {:2f} %".format(scores[1]*100))
 ```
-##### Test accuracy
 ```python
 The Test accuracy for baseline model is is 3.644 %
 ```
@@ -414,13 +413,14 @@ Total params: 4,571,520
 Trainable params: 4,566,512
 Non-trainable params: 5,008
 ```
+##### Loss and accuracy plot of CNN model
 ![Models](Images/CNN.png) 
-              Fig2. Loss and accuracy of CNN model
+
+##### Test accuracy
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for CNN model is {:2f}".format(scores[1]*100))
 ```
-##### Test accuracy
 ```python
 The Test accuracy for CNN model is 18.658 %
 ```
@@ -486,13 +486,14 @@ Trainable params: 22,868,436
 Non-trainable params: 2,325,568
 _________________________________________________________________
 ```
+##### Loss and accuracy plot of VGG19 model
 ![Models](Images/vgg19.png) 
-Fig3. Loss and accuracy of VGG19 model
+
+##### Test accuracy
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for VGG19 model is {:2f}".format(scores[1]*100))
 ```
-##### Test accuracy
 ```python
 The Test accuracy for VGG19 model is 30.1506 %
 ```
@@ -581,15 +582,15 @@ Trainable params: 22,868,436
 Non-trainable params: 2,325,568
 _________________________________________________________________
 ```
+##### Loss and accuracy plot of VGG19 model with data augmentation
+
 ![Models](Images/vgg19-aug.png) 
-              Fig4. Loss and accuracy of CNN model
-              
+ 
+##### Test accuracy
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for VGG19 model with image augmentation is {} %".format(scores[1]*100))
 ```
-##### Test accuracy
-
 ```python
 The Test accuracy for VGG19 model with image augmentation is 35.886 %
 ```
@@ -687,14 +688,14 @@ Trainable params: 22,868,436
 Non-trainable params: 2,325,568
 _________________________________________________________________
 ```
+##### Loss and accuracy plot of VGG19 model with data augmentation and bounding boxes
 ![Models](Images/vgg19-aug.png) 
-              Fig4. Loss and accuracy of CNN model
-              
+  
+##### Test accuracy  
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for VGG19 model with image augmentation and bounding boxes is {} %".format(scores[1]*100))
 ```
-##### Test accuracy
 ```python
 The Test accuracy for VGG19 model with image augmentation and bounding boxes is 54.178 %
 ```
