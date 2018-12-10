@@ -690,7 +690,7 @@ Non-trainable params: 2,325,568
 _________________________________________________________________
 ```
 ##### Loss and accuracy plot of VGG19 model with data augmentation and bounding boxes
-![Models](Images/vgg19-aug.png) 
+![Models](Images/vgg19-bound-aug.png) 
   
 ##### Test accuracy  
 ```python
