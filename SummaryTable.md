@@ -6,10 +6,6 @@ nav_include: 5
 
 ## Contents 
 
-{:.no_toc}
-
-
-
 [TOC]
 
 ## 1. Summary
