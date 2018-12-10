@@ -6,8 +6,6 @@ nav_include: 5
 
 ## Contents 
 
-{:.no_toc}
-
 [TOC]
 
 ## 1. Summary
@@ -29,7 +27,11 @@ We started using a fully connected neural network althouh we couldn't accomplish
 
 
 
-**Fig 1. Accuracy and loss**![resnet50](/Users/jesusislas/Documents/GitHup/CS109A_Project/Images/resnet50.png)
+**Fig 1. Accuracy and loss**
+
+![Table1](/Images/resnet50.png)
+
+
 
 ### 2) Convolutional connected network
 
@@ -37,6 +39,8 @@ We started using a fully connected neural network althouh we couldn't accomplish
 
 **Fig 2. CNN**
 
-![Table1](/Users/jesusislas/Documents/GitHup/CS109A_Project/Images/CNN.png)
+![Table1](/Images/CNN.png)
+
+
 
 ### -
