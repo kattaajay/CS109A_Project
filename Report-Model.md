@@ -4,7 +4,6 @@ notebook: Report-Model.ipynb
 nav_include: 4
 ---
 
-## Contents
 {:.no_toc}
 *  
 {: toc}
@@ -421,6 +420,7 @@ Non-trainable params: 5,008
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for CNN model is {:2f}".format(scores[1]*100))
 ```
+##### Test accuracy
 ```python
 The Test accuracy for CNN model is 18.658 %
 ```
@@ -462,7 +462,7 @@ callbacks_list = [checkpoint]
 print(model.summary())
 model_history = model.fit(xtrain, ytrain, epochs=25, batch_size=64,validation_split=0.2,callbacks=callbacks_list)
 ```
-#### Model summary
+##### Model summary
 ```python
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
@@ -492,6 +492,7 @@ Fig3. Loss and accuracy of VGG19 model
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for VGG19 model is {:2f}".format(scores[1]*100))
 ```
+##### Test accuracy
 ```python
 The Test accuracy for VGG19 model is 30.1506 %
 ```
@@ -556,7 +557,7 @@ model_history = model.fit_generator(image_generation.flow(X_train, y_train, batc
           validation_data=(x_val,y_val),
           callbacks=callbacks_list)
 ```
-#### Model summary
+##### Model summary
 ```python
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
@@ -587,6 +588,8 @@ _________________________________________________________________
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for VGG19 model with image augmentation is {} %".format(scores[1]*100))
 ```
+##### Test accuracy
+
 ```python
 The Test accuracy for VGG19 model with image augmentation is 35.886 %
 ```
@@ -660,7 +663,7 @@ model_history = model.fit_generator(image_generation.flow(X_train, y_train, batc
           validation_data=(x_val,y_val),
           callbacks=callbacks_list)
 ```
-#### Model summary
+##### Model summary
 ```python
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
@@ -691,6 +694,7 @@ _________________________________________________________________
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for VGG19 model with image augmentation and bounding boxes is {} %".format(scores[1]*100))
 ```
+##### Test accuracy
 ```python
 The Test accuracy for VGG19 model with image augmentation and bounding boxes is 54.178 %
 ```
