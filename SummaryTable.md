@@ -4,9 +4,11 @@ nav_include: 5
 
 ---
 
-{:.no_toc}
+## Contents
 
+{:.no_toc}*
 
+{: toc}
 
 [TOC]
 
