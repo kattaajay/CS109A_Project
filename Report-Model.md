@@ -59,6 +59,9 @@ np.save('gdrive/My Drive/Colab Notebooks/y_test', y_test)
 
 ## Deep Learning Models
 
+Before deep diving in to more advanced models, we created a baseline model with 10 hidden layers and each layer has 100 nodes. Inorder to overcome the over fitting, batch normalization and drop out is used. The baseline model is run for 50 epochs and we have created a callback which would save only best weights based on cross validation accuracy.
+
+
 #### 1. Baseline Neural network model
 
    ```python
