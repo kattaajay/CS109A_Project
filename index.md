@@ -1,28 +1,21 @@
 ---
-title: Overview:
-notebook: Report-Homepage.ipynb
-nav_include: 1
+title: CS109A Data Science Final Project
 ---
 
+Edgardo Hernandez, Jesus Islas and Ajay Katta Group#1
 
-## CS109A Data Science Final project
- Edgardo Hernandez, Ajay Katta, Jesus Islas
- 
-Group #1
+**Motivation:**
 
+The dog's market has grown a lot in the past years and having the task to identify a dog breed accuraly has become a quite challenge especially for businesses selling products taylored for breed type. 
 
-### Motivation and problem statment:
+However, it is quite difficult to identify a dog breed by simply looking at it, some of the dog breeds are very complex to identify by human eye because they have been combined with other breeds or  multiple breeds look alike a complex task for human eye; this includes experts and veterinaries.
 
-The Stanford Dogs dataset contains images of 120 breeds of dogs from around the world. This dataset has been built using images and annotation from ImageNet for the task of fine-grained image categorization. Contents of this dataset: • Number of categories: 120 • Number of images: 20,580
+On another hand, shelters and veterinary clinics have been strugleling with this particular task which in some cases may result in a bad decision. For this reason, we have came up with  a set of modesl to help predict and classify dog breeds more accuraly just by looking into its image. 
 
-We will build models to classify dog breed and compare them. The files which we need to perform exploratory data analysis are
+The model uses fully connected networks (FCN) as well as convulational neural networks (CNN) to improve accuracy while predicting the images. 
 
-http://vision.stanford.edu/aditya86/ImageNetDogs/images.tar
+## Dog Breed Clasification using neural network 
 
-http://vision.stanford.edu/aditya86/ImageNetDogs/lists.tar
-
-
-![IMUs](/Images/dog1.png)
-
+![img](https://cdn-images-1.medium.com/max/1600/1*bHnak3AMWoAFRBd5PnifpQ.png)
 
 
