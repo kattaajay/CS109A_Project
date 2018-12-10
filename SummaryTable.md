@@ -6,13 +6,14 @@ nav_include: 5
 
 ## Contents
 
-{:.no_toc}*
+1. [Summary](#summary)
+2. [Results](#results)
+   1. [Fully Connected Network](#fcn)
+   2. [Convolutional Connected Network](#cnn)
+   3. [CNN with augmentation](#cnn_aug)
+   4. [VGG19](#vgg19)
 
-{: toc}
-
-
-
-## 1. Summary
+## 1. Summary <a name="summary"></a>
 
 We started using a fully connected neural network, however we couldn't accomplish a good test score for that reason we incorporated other techniques such as a convolutional neural network including data augmentation.
 
@@ -29,9 +30,9 @@ One of the biggest challenges is to train this kind of models due to its complex
 | VGG19 with image augmentation                   |                 | 35.88%              |                      |
 | VGG19 with image augmentation  & bounding boxes |                 | 54.17%              |                      |
 
-## 2. Results
+## 2. Results <a name="results"></a>
 
-### 1) Fully connected network
+### 1) Fully connected network <a name="fcn"></a>
 
 
 
@@ -41,7 +42,7 @@ One of the biggest challenges is to train this kind of models due to its complex
 
 
 
-### 2) Convolutional connected network
+### 2) Convolutional connected network <a name="cnn"></a>
 
 
 
@@ -51,7 +52,7 @@ One of the biggest challenges is to train this kind of models due to its complex
 
 
 
-### 3) CNN with augmentation
+### 3) CNN with augmentation <a name="cnn_aug"></a>
 
 
 
@@ -61,7 +62,7 @@ One of the biggest challenges is to train this kind of models due to its complex
 
 
 
-### 4) VGG19
+### 4) VGG19 <a name="vgg19"></a>
 
 **Fig 4. VGG19**
 
