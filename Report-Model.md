@@ -7,7 +7,6 @@ nav_include: 4
 {:.no_toc}
 *  
 {: toc}
-
 **Model Descriptions**
 
 We have worked on various models for image classification. We have created a baseline model with multiple layers of Neural network, convolutional neural networks models, pre-trained models such as VGG19 and also tried to enhance the test accuracy using image augmentation and cropping images using the abounding boxes. All the models were discussed below and the challenge was the less number of images that we have for each class, and also the computational resources that are available. The total number of classes that are in dataset are 120, and number of images that are available for modelling are 20580. Furthermore, we have split training set to training and validation sets for cross-validation. All the results and conclusions are discussed in Conclusions and Results page.
@@ -71,7 +70,7 @@ xtrain=np.load('gdrive/My Drive/Colab Notebooks/X_train.npy')
 xtest=np.load('gdrive/My Drive/Colab Notebooks/X_test.npy')
 ytrain=np.load('gdrive/My Drive/Colab Notebooks/y_train.npy')
 ytest=np.load('gdrive/My Drive/Colab Notebooks/y_test.npy')
-```
+   ```
 ```python
 # Flatten input array
 
@@ -254,7 +253,7 @@ _________________________________________________________________
 
 ##### Loss and accuracy plot of Baseline model
 ![Models](Images/dnn.png) 
-                               
+​                               
 ##### Test accuracy
 ```python
 scores = model.evaluate(X_test.reshape(X_test.shape[0],-1), ytest, verbose=0)
@@ -574,7 +573,7 @@ _________________________________________________________________
 ##### Loss and accuracy plot of VGG19 model with data augmentation
 
 ![Models](Images/CNN-aug.png) 
- 
+
 ##### Test accuracy
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
@@ -747,7 +746,7 @@ _________________________________________________________________
 ##### Loss and accuracy plot of VGG19 model with data augmentation
 
 ![Models](Images/vgg19-aug.png) 
- 
+
 ##### Test accuracy
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
@@ -852,7 +851,7 @@ _________________________________________________________________
 ```
 ##### Loss and accuracy plot of VGG19 model with data augmentation and bounding boxes
 ![Models](Images/vgg19-bound-aug.png) 
-  
+
 ##### Test accuracy  
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)

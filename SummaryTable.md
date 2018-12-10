@@ -4,7 +4,7 @@ nav_include: 5
 
 ---
 
-## Contents 
+{:.no_toc}
 
 [TOC]
 
