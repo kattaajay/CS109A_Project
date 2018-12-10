@@ -266,14 +266,15 @@ The Test accuracy for baseline model is is 3.644 %
 
 ```python
 
-kernerlsize=(3,3)
-drop_out=0.5
-
 #create model
+
+drop_out=0.0
+kernelsize=3
+
 model = Sequential()
 
 # Convolution layer 1
-model.add(Convolution2D(filters = 32, kernel_size = kernerlsize,padding = 'Same', 
+model.add(Convolution2D(filters = 32, kernel_size = kernelsize,padding = 'Same', 
                          activation ='relu',
                         input_shape = (96, 96, 3))) 
 model.add(BatchNormalization())
@@ -282,7 +283,7 @@ model.add(Dropout(drop_out))
 
 
 # Convolution layer 2
-model.add(Convolution2D (filters = 64, kernel_size = kernerlsize,padding = 'Same', 
+model.add(Convolution2D (filters = 64, kernel_size = kernelsize,padding = 'Same', 
                          activation ='relu')) 
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
@@ -290,14 +291,14 @@ model.add(Dropout(drop_out))
 
 
 # Convolution layer 3
-model.add(Convolution2D (filters = 128, kernel_size = kernerlsize,padding = 'Same', 
+model.add(Convolution2D (filters = 128, kernel_size = kernelsize,padding = 'Same', 
                          activation ='relu')) 
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(drop_out))
 
 # Convolution layer 4
-model.add(Convolution2D (filters = 256, kernel_size = kernerlsize,padding = 'Same', 
+model.add(Convolution2D (filters = 256, kernel_size = kernelsize,padding = 'Same', 
                          activation ='relu')) 
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
@@ -305,29 +306,19 @@ model.add(Dropout(drop_out))
 
 
 # Convolution layer 5
-model.add(Convolution2D (filters = 512, kernel_size = kernerlsize,padding = 'Same', 
+model.add(Convolution2D (filters = 512, kernel_size = kernelsize,padding = 'Same', 
                          activation ='relu')) 
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(drop_out))
 
-
-# Convolution layer 6
-model.add(Convolution2D (filters = 512, kernel_size = kernerlsize,padding = 'Same', 
-                         activation ='relu')) 
-model.add(BatchNormalization())
-model.add(MaxPooling2D(pool_size=(2,2)))
-model.add(Dropout(drop_out))
-
-
-# Flatten
-model.add(Flatten()) 
+model.add(GlobalAveragePooling2D())
 
 # Fully connected layer 
 model.add(Dense(units = 1000)) 
 model.add(BatchNormalization())
 model.add(Activation('relu')) 
-model.add(Dropout(drop_out))
+model.add(Dropout(0.2))
 
 #Output layer with 120 nodes
 model.add(Dense(120, activation = 'softmax')) 
@@ -335,84 +326,75 @@ model.add(Dense(120, activation = 'softmax'))
 
 model.compile(loss='categorical_crossentropy',optimizer='adam', metrics=['accuracy'])
 
-## save the weights, when validation is best
-
 weight_path='gdrive/My Drive/Colab Notebooks/CNN_bound.hdf5'
 checkpoint = ModelCheckpoint(weight_path, monitor='val_acc', verbose=1, save_best_only=True)
 callbacks_list = [checkpoint]
 
 
 print(model.summary())
-model_history = model.fit(xtrain, ytrain, epochs=100, batch_size=128,validation_split=0.2, callbacks=callbacks_list)
+model_history = model.fit(xtrain, ytrain, epochs=100, batch_size=128,validation_split=0.2, callbacks=callbacks_list))
 ```
 ##### Model summary
 ```python
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-conv2d_25 (Conv2D)           (None, 96, 96, 32)        896       
+conv2d_22 (Conv2D)           (None, 96, 96, 32)        896       
 _________________________________________________________________
-batch_normalization_29 (Batc (None, 96, 96, 32)        128       
+batch_normalization_24 (Batc (None, 96, 96, 32)        128       
 _________________________________________________________________
-max_pooling2d_25 (MaxPooling (None, 48, 48, 32)        0         
+max_pooling2d_21 (MaxPooling (None, 48, 48, 32)        0         
 _________________________________________________________________
 dropout_23 (Dropout)         (None, 48, 48, 32)        0         
 _________________________________________________________________
-conv2d_26 (Conv2D)           (None, 48, 48, 64)        18496     
+conv2d_23 (Conv2D)           (None, 48, 48, 64)        18496     
 _________________________________________________________________
-batch_normalization_30 (Batc (None, 48, 48, 64)        256       
+batch_normalization_25 (Batc (None, 48, 48, 64)        256       
 _________________________________________________________________
-max_pooling2d_26 (MaxPooling (None, 24, 24, 64)        0         
+max_pooling2d_22 (MaxPooling (None, 24, 24, 64)        0         
 _________________________________________________________________
 dropout_24 (Dropout)         (None, 24, 24, 64)        0         
 _________________________________________________________________
-conv2d_27 (Conv2D)           (None, 24, 24, 128)       73856     
+conv2d_24 (Conv2D)           (None, 24, 24, 128)       73856     
 _________________________________________________________________
-batch_normalization_31 (Batc (None, 24, 24, 128)       512       
+batch_normalization_26 (Batc (None, 24, 24, 128)       512       
 _________________________________________________________________
-max_pooling2d_27 (MaxPooling (None, 12, 12, 128)       0         
+max_pooling2d_23 (MaxPooling (None, 12, 12, 128)       0         
 _________________________________________________________________
 dropout_25 (Dropout)         (None, 12, 12, 128)       0         
 _________________________________________________________________
-conv2d_28 (Conv2D)           (None, 12, 12, 256)       295168    
+conv2d_25 (Conv2D)           (None, 12, 12, 256)       295168    
 _________________________________________________________________
-batch_normalization_32 (Batc (None, 12, 12, 256)       1024      
+batch_normalization_27 (Batc (None, 12, 12, 256)       1024      
 _________________________________________________________________
-max_pooling2d_28 (MaxPooling (None, 6, 6, 256)         0         
+max_pooling2d_24 (MaxPooling (None, 6, 6, 256)         0         
 _________________________________________________________________
 dropout_26 (Dropout)         (None, 6, 6, 256)         0         
 _________________________________________________________________
-conv2d_29 (Conv2D)           (None, 6, 6, 512)         1180160   
+conv2d_26 (Conv2D)           (None, 6, 6, 512)         1180160   
 _________________________________________________________________
-batch_normalization_33 (Batc (None, 6, 6, 512)         2048      
+batch_normalization_28 (Batc (None, 6, 6, 512)         2048      
 _________________________________________________________________
-max_pooling2d_29 (MaxPooling (None, 3, 3, 512)         0         
+max_pooling2d_25 (MaxPooling (None, 3, 3, 512)         0         
 _________________________________________________________________
 dropout_27 (Dropout)         (None, 3, 3, 512)         0         
 _________________________________________________________________
-conv2d_30 (Conv2D)           (None, 3, 3, 512)         2359808   
+global_average_pooling2d_4 ( (None, 512)               0         
 _________________________________________________________________
-batch_normalization_34 (Batc (None, 3, 3, 512)         2048      
+dense_5 (Dense)              (None, 1000)              513000    
 _________________________________________________________________
-max_pooling2d_30 (MaxPooling (None, 1, 1, 512)         0         
+batch_normalization_29 (Batc (None, 1000)              4000      
 _________________________________________________________________
-dropout_28 (Dropout)         (None, 1, 1, 512)         0         
+activation_3 (Activation)    (None, 1000)              0         
 _________________________________________________________________
-flatten_5 (Flatten)          (None, 512)               0         
+dropout_28 (Dropout)         (None, 1000)              0         
 _________________________________________________________________
-dense_9 (Dense)              (None, 1000)              513000    
-_________________________________________________________________
-batch_normalization_35 (Batc (None, 1000)              4000      
-_________________________________________________________________
-activation_5 (Activation)    (None, 1000)              0         
-_________________________________________________________________
-dropout_29 (Dropout)         (None, 1000)              0         
-_________________________________________________________________
-dense_10 (Dense)             (None, 120)               120120    
+dense_6 (Dense)              (None, 120)               120120    
 =================================================================
-Total params: 4,571,520
-Trainable params: 4,566,512
-Non-trainable params: 5,008
+Total params: 2,209,664
+Trainable params: 2,205,680
+Non-trainable params: 3,984
+_________________________________________________________________
 ```
 ##### Loss and accuracy plot of CNN model
 ![Models](Images/CNN.png) 
@@ -425,6 +407,177 @@ print(" The Test accuracy for CNN model is {:2f}".format(scores[1]*100))
 ```python
 The Test accuracy for CNN model is 18.658 %
 ```
+#### 3. CNN with image augmentation
+
+```python
+# split train data to train and validation sets
+X_train, x_val, y_train, y_val = train_test_split(xtrain,
+                                                    ytrain, test_size=0.2,random_state=9999,
+                                                   stratify=ytrain)
+# Imagedata generator wuth multiple 
+image_generation = ImageDataGenerator(
+                        featurewise_center=False,
+                        featurewise_std_normalization=False,
+                        rotation_range=10,
+                        width_shift_range=0.1,
+                        height_shift_range=0.1,
+                        zoom_range=.1,
+                        horizontal_flip=True)
+
+
+
+#Fit the image generator to training data
+image_generation.fit(X_train, augment=True)
+```
+```python
+#create model
+
+drop_out=0.0
+kernelsize=3
+
+model = Sequential()
+
+# Convolution layer 1
+model.add(Convolution2D(filters = 32, kernel_size = kernelsize,padding = 'Same', 
+                         activation ='relu',
+                        input_shape = (96, 96, 3))) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+
+# Convolution layer 2
+model.add(Convolution2D (filters = 64, kernel_size = kernelsize,padding = 'Same', 
+                         activation ='relu')) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+
+# Convolution layer 3
+model.add(Convolution2D (filters = 128, kernel_size = kernelsize,padding = 'Same', 
+                         activation ='relu')) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+# Convolution layer 4
+model.add(Convolution2D (filters = 256, kernel_size = kernelsize,padding = 'Same', 
+                         activation ='relu')) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+
+# Convolution layer 5
+model.add(Convolution2D (filters = 512, kernel_size = kernelsize,padding = 'Same', 
+                         activation ='relu')) 
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(drop_out))
+
+model.add(GlobalAveragePooling2D())
+
+# Fully connected layer 
+model.add(Dense(units = 1000)) 
+model.add(BatchNormalization())
+model.add(Activation('relu')) 
+model.add(Dropout(0.2))
+
+#Output layer with 120 nodes
+model.add(Dense(120, activation = 'softmax')) 
+# Compile model
+
+model.compile(loss='categorical_crossentropy',optimizer=optimizers.RMSprop(lr=1e-3), metrics=['accuracy'])
+
+weight_path='gdrive/My Drive/Colab Notebooks/CNN_aug.hdf5'
+checkpoint = ModelCheckpoint(weight_path, monitor='val_acc', verbose=1, save_best_only=True)
+callbacks_list = [checkpoint]
+
+
+print(model.summary())
+model_history = model.fit_generator(image_gen.flow(X_train, y_train, batch_size=64),
+          epochs=30,
+          verbose=1,
+          steps_per_epoch=X_train.shape[0]//64,
+          validation_data=(x_val,y_val),
+          callbacks=callbacks_list)
+```
+#### Model summary
+```python
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_22 (Conv2D)           (None, 96, 96, 32)        896       
+_________________________________________________________________
+batch_normalization_24 (Batc (None, 96, 96, 32)        128       
+_________________________________________________________________
+max_pooling2d_21 (MaxPooling (None, 48, 48, 32)        0         
+_________________________________________________________________
+dropout_23 (Dropout)         (None, 48, 48, 32)        0         
+_________________________________________________________________
+conv2d_23 (Conv2D)           (None, 48, 48, 64)        18496     
+_________________________________________________________________
+batch_normalization_25 (Batc (None, 48, 48, 64)        256       
+_________________________________________________________________
+max_pooling2d_22 (MaxPooling (None, 24, 24, 64)        0         
+_________________________________________________________________
+dropout_24 (Dropout)         (None, 24, 24, 64)        0         
+_________________________________________________________________
+conv2d_24 (Conv2D)           (None, 24, 24, 128)       73856     
+_________________________________________________________________
+batch_normalization_26 (Batc (None, 24, 24, 128)       512       
+_________________________________________________________________
+max_pooling2d_23 (MaxPooling (None, 12, 12, 128)       0         
+_________________________________________________________________
+dropout_25 (Dropout)         (None, 12, 12, 128)       0         
+_________________________________________________________________
+conv2d_25 (Conv2D)           (None, 12, 12, 256)       295168    
+_________________________________________________________________
+batch_normalization_27 (Batc (None, 12, 12, 256)       1024      
+_________________________________________________________________
+max_pooling2d_24 (MaxPooling (None, 6, 6, 256)         0         
+_________________________________________________________________
+dropout_26 (Dropout)         (None, 6, 6, 256)         0         
+_________________________________________________________________
+conv2d_26 (Conv2D)           (None, 6, 6, 512)         1180160   
+_________________________________________________________________
+batch_normalization_28 (Batc (None, 6, 6, 512)         2048      
+_________________________________________________________________
+max_pooling2d_25 (MaxPooling (None, 3, 3, 512)         0         
+_________________________________________________________________
+dropout_27 (Dropout)         (None, 3, 3, 512)         0         
+_________________________________________________________________
+global_average_pooling2d_4 ( (None, 512)               0         
+_________________________________________________________________
+dense_5 (Dense)              (None, 1000)              513000    
+_________________________________________________________________
+batch_normalization_29 (Batc (None, 1000)              4000      
+_________________________________________________________________
+activation_3 (Activation)    (None, 1000)              0         
+_________________________________________________________________
+dropout_28 (Dropout)         (None, 1000)              0         
+_________________________________________________________________
+dense_6 (Dense)              (None, 120)               120120    
+=================================================================
+Total params: 2,209,664
+Trainable params: 2,205,680
+Non-trainable params: 3,984
+_________________________________________________________________
+```
+##### Loss and accuracy plot of VGG19 model with data augmentation
+
+![Models](Images/CNN-aug.png) 
+ 
+##### Test accuracy
+```python
+scores = model.evaluate(xtest, ytest, verbose=0)
+print(" The Test accuracy for CNN model with image augmentation is {} %".format(scores[1]*100))
+```
+```python
+The Test accuracy for CNN model with image augmentation is 30.174 %
+```
+
 #### 3. VGG19
 
 ```python
