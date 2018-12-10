@@ -6,11 +6,19 @@ nav_include: 5
 
 ## Contents 
 
+{:.no_toc}
+
+
+
 [TOC]
 
 ## 1. Summary
 
-We started using a fully connected neural network althouh we couldn't accomplish a good score for that reason we have to incorporate other techniques such as a convolitional neural network including data augmentation 
+We started using a fully connected neural network, however we couldn't accomplish a good test score for that reason we incorporated other techniques such as a convolutional neural network including data augmentation.
+
+One of the biggest challenges is to train this kind of models due to its complexity and the large image file size.  For this particular reason, we are limited to use our personal computers, jupyter portal and google colab. These last two complain about the file size so we ended up resizing which ended up paying the price with accuracy. 
+
+
 
 | Method                                          | Best Test Score | Best Training Score | Number of Predictors |
 | ----------------------------------------------- | --------------- | ------------------- | -------------------- |
@@ -43,4 +51,18 @@ We started using a fully connected neural network althouh we couldn't accomplish
 
 
 
-### -
+### 3) CNN with augmentation
+
+
+
+**Fig 3. CNN with augmentation**
+
+![Table1](/Images/CNN-aug.png)
+
+
+
+### 4) VGG19
+
+**Fig 4. VGG19**
+
+![Table1](/Images/vgg19.png)

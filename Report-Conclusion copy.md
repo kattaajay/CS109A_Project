@@ -1,6 +1,6 @@
 ---
 title: Results and Conclusion
-nav_include: 5
+
 ---
 
 ## Contents
