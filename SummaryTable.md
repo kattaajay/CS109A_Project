@@ -19,6 +19,10 @@ We started using a fully connected neural network, however we couldn't accomplis
 
 One of the biggest challenges is to train this kind of models due to its complexity and the large image file size.  For this particular reason, we are limited to use our personal computers, jupyter portal and google colab. These last two complain about the file size so we ended up resizing which ended up paying the price with accuracy. 
 
+![Table1](/Images/FCN.png)
+
+Our model follows the concept depicted in the image above an image is fed into the inception model. The outcome from the inceptional model needs to go over multiple fully connected layers then the softmax returns probabilities of an image to determine which class belong to.
+
 
 
 | Method                                          | Best Test Score | Best Training Score | Number of Predictors |
