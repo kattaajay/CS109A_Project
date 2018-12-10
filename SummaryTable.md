@@ -10,7 +10,7 @@ nav_include: 5
 
 {: toc}
 
-[TOC]
+
 
 ## 1. Summary
 
