@@ -503,7 +503,7 @@ model_history = model.fit_generator(image_gen.flow(X_train, y_train, batch_size=
           validation_data=(x_val,y_val),
           callbacks=callbacks_list)
 ```
-#### Model summary
+##### Model summary
 ```python
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
