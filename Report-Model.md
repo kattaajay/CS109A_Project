@@ -249,10 +249,10 @@ Non-trainable params: 2,000
 _________________________________________________________________
 ```
 
-##### Loss and accuracy plot of Baseline model
+#### Loss and accuracy plot of Baseline model
 ![Models](Images/dnn.png) 
                                
-##### Test accuracy
+#### Test accuracy
 ```python
 scores = model.evaluate(X_test.reshape(X_test.shape[0],-1), ytest, verbose=0)
 print(" The Test accuracy for baseline model is {:2f} %".format(scores[1]*100))
@@ -413,10 +413,10 @@ Total params: 4,571,520
 Trainable params: 4,566,512
 Non-trainable params: 5,008
 ```
-##### Loss and accuracy plot of CNN model
+#### Loss and accuracy plot of CNN model
 ![Models](Images/CNN.png) 
 
-##### Test accuracy
+#### Test accuracy
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for CNN model is {:2f}".format(scores[1]*100))
@@ -486,10 +486,10 @@ Trainable params: 22,868,436
 Non-trainable params: 2,325,568
 _________________________________________________________________
 ```
-##### Loss and accuracy plot of VGG19 model
+#### Loss and accuracy plot of VGG19 model
 ![Models](Images/vgg19.png) 
 
-##### Test accuracy
+#### Test accuracy
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for VGG19 model is {:2f}".format(scores[1]*100))
@@ -582,11 +582,11 @@ Trainable params: 22,868,436
 Non-trainable params: 2,325,568
 _________________________________________________________________
 ```
-##### Loss and accuracy plot of VGG19 model with data augmentation
+#### Loss and accuracy plot of VGG19 model with data augmentation
 
 ![Models](Images/vgg19-aug.png) 
  
-##### Test accuracy
+#### Test accuracy
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for VGG19 model with image augmentation is {} %".format(scores[1]*100))
@@ -688,10 +688,10 @@ Trainable params: 22,868,436
 Non-trainable params: 2,325,568
 _________________________________________________________________
 ```
-##### Loss and accuracy plot of VGG19 model with data augmentation and bounding boxes
+#### Loss and accuracy plot of VGG19 model with data augmentation and bounding boxes
 ![Models](Images/vgg19-aug.png) 
   
-##### Test accuracy  
+#### Test accuracy  
 ```python
 scores = model.evaluate(xtest, ytest, verbose=0)
 print(" The Test accuracy for VGG19 model with image augmentation and bounding boxes is {} %".format(scores[1]*100))
