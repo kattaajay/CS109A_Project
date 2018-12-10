@@ -266,6 +266,8 @@ The Test accuracy for baseline model is is 3.644 %
 
 #### 2. Convolutional Neural Network model
 
+The baseline model was able to achieve the test accuracy of 3.64 %, the next model that was considered is Convolutional Neural Networks. We CNN architecture which consists of 5 convents and one fully connected layer. The model was run for 100 epoch and the best weights are saved using cross-validation.
+
 ```python
 
 #create model
