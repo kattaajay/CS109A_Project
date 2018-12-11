@@ -416,7 +416,6 @@ As we can see above, the best accuracy that we have got after fine-tuning the CN
 
 ![Models](Images/DATA_AUG.png)
 
-   Fig. height shift
 
 ```python
 # split train data to train and validation sets
