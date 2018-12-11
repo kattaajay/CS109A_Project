@@ -46,7 +46,7 @@ Before deep diving in to more advanced models, we created a baseline model with 
 
 **Fig 1. Accuracy and loss**
 
-![Table1](/Images/resnet50.png)
+![Table1](/Images/dnn.png)
 
 
 
