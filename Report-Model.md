@@ -9,13 +9,19 @@ nav_include: 4
 {: toc}
 **Model Descriptions**
 
-We have worked on various models for image classification. We have created a baseline model with multiple layers of Neural network, convolutional neural networks models, pre-trained models such as VGG19 and also tried to enhance the test accuracy using image augmentation and cropping images using the abounding boxes. All the models were discussed below and the challenge was the less number of images that we have for each class, and also the computational resources that are available. The total number of classes that are in dataset are 120, and number of images that are available for modelling are 20580. Furthermore, we have split training set to training and validation sets for cross-validation. All the results and conclusions are discussed in Conclusions and Results page.
+We have worked on various models for image classification; created a baseline model with multiple layers of Neural network, convolutional neural networks models, pre-trained models such as VGG19 and also tried to enhance the test accuracy using image augmentation and cropping images using the bounding boxes. All our models architecture, fitting and results details are described below.
+
+ We faced the challenge of a dataset with a high number of classes and a low number of images per each class. The total number of classes in dataset is 120, and the total number of images that are available for modeling is 20580, with an average of 171 images per class.  Furthermore, we have split training set to training and validation sets for cross-validation. All the results and conclusions are discussed in Conclusions and Results page. 
+ 
+We also had to deal with limited computational resources and no access to use multiple GPUs machines.
+
+
 
 
 
 ##  Data Preparation
 
-The dataset provided "file_list.mat" file, from where you can extract the image names and labels, using that file images are converted to numpy arrays and same with the labels. After converting them in to numpy arrays, we have saved them so that they can be used in different models.
+The dataset provided a “file_list.mat” file, from where you can extract the image names and labels, these file images were converted to numpy arrays and same with the labels, which also were one-hot encoded. After converting them in to numpy arrays, we have saved them so that they could be used by our different models.
 
 ```python
 # Load the files 
@@ -265,7 +271,7 @@ The Test accuracy for baseline model is is 3.644 %
 
 #### 2. Convolutional Neural Network model
 
-The baseline model was able to achieve the test accuracy of 3.64 %, the next model that was considered is Convolutional Neural Networks. We CNN architecture which consists of 5 convents and one fully connected layer. The model was run for 100 epoch and the best weights are saved using cross-validation.
+The baseline model was able to achieve the test accuracy of 3.64 % in never seen data; the next model that was considered is Convolutional Neural Networks. We used a CNN architecture which consists of 5 ConvNets and one fully connected layer. The model was run for 100 epoch and the best weights are saved using cross-validation.
 
 ```python
 
@@ -412,7 +418,7 @@ The Test accuracy for CNN model is 18.658 %
 ```
 #### 3. CNN with image augmentation
 
-As we can see above, the best accuracy that we have got after fine-tuning the CNN is around 18.66% even after having batch normalization and drop out. Inorder to increase the accuracy, we did image augmentation, since we have less number of images per class. Using the image data generator that comes with keras, we are able to generate batches of image data with real-time data augmentation. The augmentation that was considered are rotation, width shift, height shift, zoom range, horizontal flip. Below are the images which have gone through multiple image augmentations.
+As we can see above, the best accuracy that we have got, after fine-tuning the CNN, is around 18.66% even after having batch normalization and drop out. In order to increase the accuracy, we did image augmentation, since we have low number of images per class. Using the image data generator that comes with keras, we are able to generate batches of image data with real-time data augmentation. The augmentation transformations that were considered are: rotation, width shift, height shift, zoom range, and horizontal flip. Below are the images which have gone through multiple image augmentations.
 
 ![Models](Images/DATA_AUG.png)
 
@@ -588,7 +594,7 @@ The Test accuracy for CNN model with image augmentation is 30.174 %
 
 #### 3. VGG19
 
-Image augmentation helped CNNs to achieve better score, but inorder to achieve more  accuracy, we used  a convolutional neural network 'VGG19' that is trained on more than a million images from the ImageNet database. The network is 19 layers deep and we have frozen all layers, except last two convnets and trained the model, so that we fine-tune VGG19 to our data.
+Image augmentation helped CNNs to achieve better score, but to achieve more accuracy we used a convolutional neural network ‘VGG19’ that is trained on more than a million images from the ImageNet database. The network is 19 layers deep and we have frozen all layers, except last two ConvNets and trained the model, so that we fine-tune VGG19 to our data.
 
 ```python
 
@@ -662,6 +668,8 @@ print(" The Test accuracy for VGG19 model is {:2f}".format(scores[1]*100))
 The Test accuracy for VGG19 model is 30.1506 %
 ```
 #### 4. VGG19 with image augmentation
+
+With the use of the VGG19 we reached a test accuracy of 30%, in never seen data. In our next experiment, aiming to overcome the limitations of the low number of images per class, we used data augmentation combined with the inclusion of the VGG19 in the network architecture.
 
 ```python
 # split train data to train and validation sets
@@ -760,6 +768,11 @@ The Test accuracy for VGG19 model with image augmentation is 35.886 %
 ```
 
 #### 5. VGG19 with image augmentation and cropping images using bounding boxes
+
+The data augmentation helped to improve the test accuracy result to ~36%; it was a good improvement but still not as good as expected. In an attempt to further improve the accuracy results we used data augmentation and limed the images to show only the dog, cropping using bounding boxes, all these combined with the inclusion of the VGG19 in the network architecture.
+
+The classification results obtained with our last model improved considerably, up to 54%; which we consider a very good result based on the dataset limitations and computational resources at hand. In addition the Stanford Dogs Breed dataset is known to be a difficult dataset to work with -as many people have stated in Kaggle, because of its lack of sample data per class.
+
 
 ```python
 # Load data which was cropped using annotations file
