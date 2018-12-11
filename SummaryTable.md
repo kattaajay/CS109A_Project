@@ -23,7 +23,7 @@ One of the biggest challenges is to train this kind of models due to its complex
 
 ![Table1](/Images/FCN_VGG19.png)
 
-Our model follows the concept depicted in the image above an image is fed into the VGG19 model. The outcome from the inceptional model needs to go over multiple fully connected layers then the softmax returns probabilities of an image to determine which class belong to.
+Our model with highest accuravy follows the concept depicted in the image above an image is fed into the VGG19 pre-trained model. The outcome from the VGG19 model needs to go over multiple fully connected layers then the softmax returns probabilities of an image to determine which class belong to.
 
 
 
