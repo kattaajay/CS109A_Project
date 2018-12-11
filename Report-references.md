@@ -13,3 +13,6 @@ nav_include: 6
 
 
 References:
+
+https://towardsdatascience.com/dog-breed-classification-hands-on-approach-b5e4f88c333e
+
