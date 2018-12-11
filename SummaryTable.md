@@ -19,7 +19,7 @@ nav_include: 5
 
 We started using a fully connected neural network, however we couldn't accomplish a good test score for that reason we incorporated other techniques such as a convolutional neural network including data augmentation.
 
-One of the biggest challenges is to train this kind of models due to its complexity and the large image file size.  For this particular reason and because we were using our personal computers, jupyter portal and google colab. The model training process takes a long time, we took advantage of Colab but there is a hard limit for file size so we had to reduce the image sizes which resulted a train model with not the accuracy we were expecting but still very acceptable results. 
+One of the biggest challenges is to train this kind of models due to its complexity and the large image file size.  For this particular reason and because we were using our personal computers, jupyter portal and google Colab. The model training process takes a long time, we took advantage of Colab but there is a hard limit for file size so we had to reduce the image sizes which resulted a train model with not the accuracy we were expecting but still very acceptable results. 
 
 ![Table1](/Images/FCN.pdf)
 
