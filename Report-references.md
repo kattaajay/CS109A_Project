@@ -14,7 +14,6 @@ nav_include: 6
 
 References:
 1. https://keras.io/layers/convolutional/
-
 2. http://vision.stanford.edu/aditya86/ImageNetDogs/
 3. https://keras.io/layers/normalization/
 4. https://towardsdatascience.com/dog-breed-classification-hands-on-approach-b5e4f88c333e
