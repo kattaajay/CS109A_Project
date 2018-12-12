@@ -34,6 +34,8 @@ The model with the highest accuracy follows the architecture depicted in the abo
 
 ### 2) Score and parameter table per model <a name="Table"></a>
 
+Overall, VGG19 pre-trained model with image augmentation and bounding boxes achieved the best test accuracy and scores for various other models are shown below.
+
 ![Results](/Images/test-score-table.png)
 
 ![Results](/Images/test-score-plot.png)
