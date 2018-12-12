@@ -16,6 +16,7 @@ nav_include: 5
    4. [VGG19](#vgg19)
    5. [VGG19 with image augmentation](#vgg19_aug)
    6. [VGG19 with augmentation and  cropping images with bounding boxes](#vgg19_box)
+3. [Conclusion](#summary)
 
 ## 1. Summary <a name="summary"></a>
 
@@ -106,4 +107,11 @@ The data augmentation helped to improve the test accuracy result to ~36%; it was
 **Fig 6. Accuracy and loss for VGG19 with cropping images using bouding boxes**
 
 ![Table1](/Images/vgg19-bound-aug.png)
+
+
+## 3. Conclusion
+
+Combining CNN model architecture, with the inclusion of a pre-trained model, with techniques of image data augmentation using transformations, and adding filtering using bounding boxes we were able to achieve a test data accuracy of 54%. This result is far superior to the average 27% accuracy a human expert can achieve when identifying a dog’s breed. 
+
+We feel very confident with our results; even we could not improve the accuracy any further due to computing limitations in memory and no access to use multiple GPUs. With the limited memory we were not able to experiment with bigger images, and without multiple GPUs we couldn’t train our models for more epochs.
 
