@@ -20,9 +20,9 @@ nav_include: 5
 
 ## 1. Summary <a name="summary"></a>
 
-We started using a fully connected neural network, however we couldn't accomplish a good test score for that reason we incorporated other techniques such as a convolutional neural network including data augmentation.
+We started with a fully connected neural network, however we couldn’t accomplish a good test score, for that reason we incorporated other class of deep neural networks such as a convolutional neural networks and Pre-trained models including data augmentation techniques.
 
-One of the biggest challenges is to train this kind of models due to its complexity and the large image file size.  For this particular reason and because we were using our personal computers, jupyter portal and google Colab. The model training process takes a long time, we took advantage of Colab but there is a hard limit for file size so we had to reduce the image sizes which resulted a train model with not the accuracy we were expecting but still very acceptable results.
+The biggest challenges that we encountered during the process of model development is the time taken to train the models because of their complexity and the large image sizes. We considered personal computers, Harvard jupyter portal and google Colab in the process of model development, since the model training process takes a long time and needs considerable amount of computing resources, we took advantage of Colaboratory provided by google, but there is a hard limit for memory and GPU, so we had to reduce the image sizes and able to experiment with different models. 
 
 
 ### 1) Best model using VGG19 architecture <a name="Picture"></a>
@@ -30,7 +30,7 @@ One of the biggest challenges is to train this kind of models due to its complex
 ![Results](/Images/FCN_VGG19.png)
 
 
-Our model with highest accuravy follows the concept depicted in the image above an image is fed into the VGG19 pre-trained model. The outcome from the VGG19 model needs to go over multiple fully connected layers then the softmax returns probabilities of an image to determine which class belongs to.
+The model with the highest accuracy follows the architecture depicted in the above image. An image is fed into the VGG19 pre-trained model and the output features from the VGG19 model goes through multiple fully connected layers, then the softmax returns probabilities of an image to determine which class belongs to. Using this model, we achieved a test accuracy of 54%.
 
 ### 2) Score and parameter table per model <a name="Table"></a>
 
