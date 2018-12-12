@@ -111,7 +111,8 @@ The classification results obtained with our last model improved considerably, u
 
 ## 3. Conclusion
 
-Combining CNN model architecture, with the inclusion of a pre-trained model, with techniques of image data augmentation using transformations, and adding filtering using bounding boxes we were able to achieve a test data accuracy of 54%. This result is far superior to the average 27% accuracy a human expert can achieve when identifying a dog’s breed. 
+Combining CNN model architecture, with the inclusion of a pre-trained model, with techniques of image data augmentation using transformations, and adding filtering using bounding boxes we were able to achieve a test data accuracy of 54%. This result is far superior to the average 27% accuracy a human expert can achieve when identifying a dog’s breed.
 
-We feel very confident with our results; even we could not improve the accuracy any further due to computing limitations in memory and no access to use multiple GPUs. With the limited memory we were not able to experiment with bigger images, and without multiple GPUs we couldn’t train our models for more epochs.
+We feel very confident with our results; even we could not improve the accuracy any further due to computing limitations in memory and no access to use multiple GPUs. With limited computational resources that are available, we are able to include 120 dog breeds and build a model to classify them with an accuracy of 54%. For future work, with more computing resources we should be able to experiment with bigger size images and fine-tune the hyperparameters to achieve better test accuracy. 
+
 
