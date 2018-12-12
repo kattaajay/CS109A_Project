@@ -7,6 +7,8 @@ nav_include: 5
 ## Contents
 
 1. [Summary](#summary)
+   1. [Best model using VGG19 architecture](#Picture)
+   2. [Score and paramater table per model](#Table) 
 2. [Results](#results)
    1. [Fully Connected Network](#fcn)
    2. [Convolutional Connected Network](#cnn)
@@ -21,12 +23,18 @@ We started using a fully connected neural network, however we couldn't accomplis
 
 One of the biggest challenges is to train this kind of models due to its complexity and the large image file size.  For this particular reason and because we were using our personal computers, jupyter portal and google Colab. The model training process takes a long time, we took advantage of Colab but there is a hard limit for file size so we had to reduce the image sizes which resulted a train model with not the accuracy we were expecting but still very acceptable results. 
 
+<<<<<<< HEAD
+### 1) Best model using VGG19 architecture <a name="Picture"></a>
+=======
 ![Results](/Images/FCN_VGG19.png)
 
+>>>>>>> 17792940a9a3148444eb1a30c92a829637894256
 
-Our model with highest accuravy follows the concept depicted in the image above an image is fed into the VGG19 pre-trained model. The outcome from the VGG19 model needs to go over multiple fully connected layers then the softmax returns probabilities of an image to determine which class belong to.
+![Table1](/Images/FCN_VGG19.png)
 
+Our model with highest accuravy follows the concept depicted in the image above an image is fed into the VGG19 pre-trained model. The outcome from the VGG19 model needs to go over multiple fully connected layers then the softmax returns probabilities of an image to determine which class belongs to.
 
+### 2) Score and parameter table per model <a name="Table"></a>
 
 | Method                                          | Best Test Score | Number of Parameters |
 | :---------------------------------------------- | --------------: | -------------------: |
@@ -41,11 +49,10 @@ Our model with highest accuravy follows the concept depicted in the image above 
 
 ### 1) Fully connected network <a name="fcn"></a>
 
-Before deep diving in to more advanced models, we created a baseline model with 10 hidden layers and each layer has 100 nodes. Inorder to overcome the over fitting, batch normalization and drop out is used. The baseline model is run for 50 epochs and we have created a callback which would save only best weights based on cross validation accuracy.
+The baseline model was able to achieve the test accuracy of 3.64 % in never seen data; the next model that was considered is Convolutional Neural Networks. We used a CNN architecture which
+consists of 5 ConvNets and one fully connected layer. The model was run for 100 epoch and the best weights are saved using cross-validation.
 
-
-
-**Fig 1. Accuracy and loss**
+**Fig 1. Accuracy and loss for FCN**
 
 ![Table1](/Images/dnn.png)
 
@@ -57,7 +64,7 @@ The baseline model was able to achieve the test accuracy of 3.64 %, the next mod
 
 
 
-**Fig 2. CNN**
+**Fig 2. Accuracy and loss for CNN**
 
 ![Table1](/Images/CNN.png)
 
@@ -69,7 +76,7 @@ As we can see above, the best accuracy that we have got after fine-tuning the CN
 
 
 
-**Fig 3. CNN with augmentation**
+**Fig 3. Accuracy and loss for CNN with augmentation**
 
 ![Table1](/Images/CNN-aug.png)
 
@@ -77,17 +84,17 @@ As we can see above, the best accuracy that we have got after fine-tuning the CN
 
 ### 4) VGG19 <a name="vgg19"></a>
 
-Image augmentation helped CNNs to achieve better score, but inorder to achieve more accuracy, we used a convolutional neural network ‘VGG19’ that is trained on more than a million images from the ImageNet database. The network is 19 layers deep and we have frozen all layers, except last two convnets and trained the model, so that we fine-tune VGG19 to our data.
+As we can see above, the best accuracy that we have got, after fine-tuning the CNN, is around 18.66% even after having batch normalization and drop out. In order to increase the accuracy, we did image augmentation, since we have low number of images per class. Using the image data generator that comes with keras, we are able to generate batches of image data with real-time data augmentation. The augmentation transformations that were considered are: rotation, width shift, height shift, zoom range, and horizontal flip. Below are the images which have gone through multiple image augmentations.
 
-
-
-**Fig 4. VGG19**
+**Fig 4. Accuracy and loss for VGG19**
 
 ![Table1](/Images/vgg19.png)
 
 ### VGG19 with image augmentation <a name="vgg19_aug"></a>
 
-**Fig 5. VGG19 with image augmentation**
+With the use of the VGG19 we reached a test accuracy of 30%, in never seen data. In our next experiment, aiming to overcome the limitations of the low number of images per class.
+
+**Fig 5. Accuracy and loss for VGG19 with image augmentation**
 
 ![Table1](/Images/vgg19-aug.png)
 
@@ -95,7 +102,11 @@ Image augmentation helped CNNs to achieve better score, but inorder to achieve m
 
 ### 5) VGG19 with augmentation and cropping images using bounding boxes <a name="vgg19_box"></a>
 
-**Fig 6. VGG19 with cropping images using bouding boxes**
+The data augmentation helped to improve the test accuracy result to ~36%; it was a good improvement but still not as good as expected. In an attempt to further improve the accuracy results we used data augmentation and limed the images to show only the dog, cropping using bounding boxes, all these combined with the inclusion of the VGG19 in the network architecture.
+
+ The classification results obtained with our last model improved considerably, up to 54%; which we consider a very good result based on the dataset limitations and computational resources at hand. In addition the Stanford Dogs Breed dataset is known to be a difficult dataset to work with -as many people have stated in Kaggle, because of its lack of sample data per class.
+
+**Fig 6. Accuracy and loss for VGG19 with cropping images using bouding boxes**
 
 ![Table1](/Images/vgg19-bound-aug.png)
 
