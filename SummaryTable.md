@@ -36,6 +36,8 @@ The model with the highest accuracy follows the architecture depicted in the abo
 
 ![Results](/Images/test-score-table.png)
 
+![Results](/Images/test-score-plot.png)
+
 ## 2. Results <a name="results"></a>
 
 ### 1) Fully connected network <a name="fcn"></a>
