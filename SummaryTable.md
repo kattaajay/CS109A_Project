@@ -23,14 +23,11 @@ We started using a fully connected neural network, however we couldn't accomplis
 
 One of the biggest challenges is to train this kind of models due to its complexity and the large image file size.  For this particular reason and because we were using our personal computers, jupyter portal and google Colab. The model training process takes a long time, we took advantage of Colab but there is a hard limit for file size so we had to reduce the image sizes which resulted a train model with not the accuracy we were expecting but still very acceptable results. 
 
-<<<<<<< HEAD
+
 ### 1) Best model using VGG19 architecture <a name="Picture"></a>
-=======
+
 ![Results](/Images/FCN_VGG19.png)
 
->>>>>>> 17792940a9a3148444eb1a30c92a829637894256
-
-![Table1](/Images/FCN_VGG19.png)
 
 Our model with highest accuravy follows the concept depicted in the image above an image is fed into the VGG19 pre-trained model. The outcome from the VGG19 model needs to go over multiple fully connected layers then the softmax returns probabilities of an image to determine which class belongs to.
 
