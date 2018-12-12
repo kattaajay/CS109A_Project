@@ -33,6 +33,9 @@ Once we untar the files we would load the file_list.mat file to get the list of 
 
 Fig 1. Image of dog
 
+![Experiment set-up](/Images/dog2.png) 
+
+Fig 2. Image of dog
 
 #### a. Load the files
 ```python
