@@ -47,8 +47,7 @@ Our model with highest accuravy follows the concept depicted in the image above 
 
 ### 1) Fully connected network <a name="fcn"></a>
 
-The baseline model was able to achieve the test accuracy of 3.64 % in never seen data; the next model that was considered is Convolutional Neural Networks. We used a CNN architecture which
-consists of 5 ConvNets and one fully connected layer. The model was run for 100 epoch and the best weights are saved using cross-validation.
+This baseline model was able to achieve the test accuracy of 3.64 % in never seen data, using architecture of 10 fully connected layers and 100 nodes. The baseline model was run for 50 epochs saving only best weights based on cross validation accuracy.
 
 **Fig 1. Accuracy and loss for FCN**
 
@@ -58,7 +57,7 @@ consists of 5 ConvNets and one fully connected layer. The model was run for 100 
 
 ### 2) Convolutional connected network <a name="cnn"></a>
 
-The baseline model was able to achieve the test accuracy of 3.64 %, the next model that was considered is Convolutional Neural Networks. We CNN architecture which consists of 5 convents and one fully connected layer. The model was run for 100 epoch and the best weights are saved using cross-validation.
+The next model considered was a Convolutional Neural Network, since this kind of network is well suited for image classification. We used a CNN architecture which consists of 5 ConvNets and one fully connected layer. With this approach we were able to achieve a test accuracy of 3.64 %, 
 
 
 
@@ -70,7 +69,7 @@ The baseline model was able to achieve the test accuracy of 3.64 %, the next mod
 
 ### 3) CNN with augmentation <a name="cnn_aug"></a>
 
-As we can see above, the best accuracy that we have got after fine-tuning the CNN is around 18.66% even after having batch normalization and drop out. Inorder to increase the accuracy, we did image augmentation, since we have less number of images per class. Using the image data generator that comes with keras, we are able to generate batches of image data with real-time data augmentation. The augmentation that was considered are rotation, width shift, height shift, zoom range, horizontal flip. Below are the images which have gone through multiple image augmentations.
+To increase the accuracy we added data augmentation to our CNN model, since we have low number of images per class. Using an image data generator, we are able to generate batches of image data with real-time data augmentation. The best accuracy that we have got after fine-tuning the CNN is around 18.66% even after having batch normalization and drop out. 
 
 
 
@@ -82,7 +81,7 @@ As we can see above, the best accuracy that we have got after fine-tuning the CN
 
 ### 4) VGG19 <a name="vgg19"></a>
 
-As we can see above, the best accuracy that we have got, after fine-tuning the CNN, is around 18.66% even after having batch normalization and drop out. In order to increase the accuracy, we did image augmentation, since we have low number of images per class. Using the image data generator that comes with keras, we are able to generate batches of image data with real-time data augmentation. The augmentation transformations that were considered are: rotation, width shift, height shift, zoom range, and horizontal flip. Below are the images which have gone through multiple image augmentations.
+Image augmentation helped CNNs to achieve better score, but to achieve higher accuracy we used a convolutional neural network ‘VGG19’ that is trained on more than a million images from the ImageNet database. The network is 19 layers deep and we have frozen all layers, except last two ConvNets and trained the model, so that we fine-tune VGG19 to our data. With the use of the VGG19 we reached a test accuracy of 30%, in never seen data. 
 
 **Fig 4. Accuracy and loss for VGG19**
 
@@ -90,7 +89,7 @@ As we can see above, the best accuracy that we have got, after fine-tuning the C
 
 ### VGG19 with image augmentation <a name="vgg19_aug"></a>
 
-With the use of the VGG19 we reached a test accuracy of 30%, in never seen data. In our next experiment, aiming to overcome the limitations of the low number of images per class.
+In our next experiment, aiming to overcome the limitations of the low number of images per class, we used data augmentation combined with the inclusion of the VGG19 in the network architecture. The data augmentation helped to improve the test accuracy result to 36%, in never seen data.
 
 **Fig 5. Accuracy and loss for VGG19 with image augmentation**
 
@@ -100,9 +99,10 @@ With the use of the VGG19 we reached a test accuracy of 30%, in never seen data.
 
 ### 5) VGG19 with augmentation and cropping images using bounding boxes <a name="vgg19_box"></a>
 
-The data augmentation helped to improve the test accuracy result to ~36%; it was a good improvement but still not as good as expected. In an attempt to further improve the accuracy results we used data augmentation and limed the images to show only the dog, cropping using bounding boxes, all these combined with the inclusion of the VGG19 in the network architecture.
+In an attempt to further improve the accuracy results we used data augmentation and limed the images to show only the dog, cropping using bounding boxes, all these combined with the inclusion of the VGG19 in the network architecture.
 
- The classification results obtained with our last model improved considerably, up to 54%; which we consider a very good result based on the dataset limitations and computational resources at hand. In addition the Stanford Dogs Breed dataset is known to be a difficult dataset to work with -as many people have stated in Kaggle, because of its lack of sample data per class.
+The classification results obtained with our last model improved considerably, up to 54%; which we consider a very good result based on the dataset limitations and computational resources at hand. In addition the Stanford Dogs Breed dataset is known to be a difficult dataset to work with -as many people have stated in Kaggle, because of its lack of sample data per class.
+
 
 **Fig 6. Accuracy and loss for VGG19 with cropping images using bouding boxes**
 
