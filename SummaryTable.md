@@ -87,7 +87,7 @@ Image augmentation helped CNNs to achieve better score, but to achieve higher ac
 
 ![Table1](/Images/vgg19.png)
 
-### VGG19 with image augmentation <a name="vgg19_aug"></a>
+### 5) VGG19 with image augmentation <a name="vgg19_aug"></a>
 
 In our next experiment, aiming to overcome the limitations of the low number of images per class, we used data augmentation combined with the inclusion of the VGG19 in the network architecture. The data augmentation helped to improve the test accuracy result to 36%, in never seen data.
 
@@ -97,7 +97,7 @@ In our next experiment, aiming to overcome the limitations of the low number of 
 
 
 
-### 5) VGG19 with augmentation and cropping images using bounding boxes <a name="vgg19_box"></a>
+### 6) VGG19 with augmentation and cropping images using bounding boxes <a name="vgg19_box"></a>
 
 In an attempt to further improve the accuracy results we used data augmentation and limed the images to show only the dog, cropping using bounding boxes, all these combined with the inclusion of the VGG19 in the network architecture.
 
