@@ -769,10 +769,11 @@ The Test accuracy for VGG19 model with image augmentation is 35.886 %
 
 #### 5. VGG19 with image augmentation and cropping images using bounding boxes
 
-The data augmentation helped to improve the test accuracy result to ~36%; it was a good improvement but still not as good as expected. In an attempt to further improve the accuracy results we used data augmentation and limed the images to show only the dog, cropping using bounding boxes, all these combined with the inclusion of the VGG19 in the network architecture.
+The data augmentation helped to improve the test accuracy result to ~36%; it was a good improvement but still not as good as expected. In an attempt to further improve the accuracy results we used data augmentation and limed the images to show only the dog, cropping using bounding boxes as shown below, all these combined with the inclusion of the VGG19 in the network architecture.
 
 The classification results obtained with our last model improved considerably, up to 54%; which we consider a very good result based on the dataset limitations and computational resources at hand. In addition the Stanford Dogs Breed dataset is known to be a difficult dataset to work with -as many people have stated in Kaggle, because of its lack of sample data per class.
 
+![Models](Images/image_before_after_crop.png)
 
 ```python
 # Load data which was cropped using annotations file
