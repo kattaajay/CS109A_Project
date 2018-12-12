@@ -34,14 +34,7 @@ The model with the highest accuracy follows the architecture depicted in the abo
 
 ### 2) Score and parameter table per model <a name="Table"></a>
 
-| Method                                          | Best Test Score | Number of Parameters |
-| :---------------------------------------------- | --------------: | -------------------: |
-| Neural Network (Baseline)                       |           3.64% |            2,871,920 |
-| Convolutional Neural Network                    |          18.66% |            2,209,664 |
-| CNN with image augmentation                     |          30.17% |            2,209,664 |
-| VGG19                                           |          30.15% |           25,194,004 |
-| VGG19 with image augmentation                   |          35.88% |           25,194,004 |
-| VGG19 with image augmentation  & bounding boxes |          54.17% |           25,194,004 |
+![Results](/Images/test-score-table.png)
 
 ## 2. Results <a name="results"></a>
 
